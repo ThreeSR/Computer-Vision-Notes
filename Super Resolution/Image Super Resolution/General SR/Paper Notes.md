@@ -22,6 +22,8 @@ Some abbreviations you may need to know before next part:
 
 `NAE = National Academy of Engineering` `NAS = National Academy of Science` `CAS = Chinese Academy of Science` `CAE = Chinese Academy of Engineering`
 
+Notice: Chinese(Simplified) and English will be used in this file.
+
 # Main Body
 
 #### Image Super-Resolution via Sparse Representation
