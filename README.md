@@ -1,6 +1,6 @@
 # Computer-Vision-Notes
 
-This repo will contain notes for CV.
+This repo will contain notes for CV-related Papers.
 
 http://latex.codecogs.com/svg.latex?
 
