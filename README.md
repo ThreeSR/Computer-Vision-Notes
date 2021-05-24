@@ -10,7 +10,7 @@ Here are a list of TOP Conferences and Transactions in CV field.
 
 TOP Conferences: CVPR, ICCV, ECCV, NIPS, ICML, ICLR
 
-TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP 
+TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP
 
 <!--http://latex.codecogs.com/svg.latex?  ![](http://latex.codecogs.com/svg.latex?\\frac{1}{1+sin(x)}) 这是我们的公式 -->
 
