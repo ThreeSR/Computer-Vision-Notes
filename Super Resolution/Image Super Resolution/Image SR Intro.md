@@ -1,4 +1,4 @@
-# Super Resolution
+# Image Super Resolution
 
 Super Resolution(SR) belongs to low-level task in CV.
 
@@ -10,8 +10,9 @@ Image above shows the process of SR, which also presents ill-posed feature of th
 
 As for the history of SR, to the best of my knowledge, I cannot assert who is the first one coming up with this idea. But I can say [Thomas Shi-Tao Huang](https://grainger.illinois.edu/about/directory/faculty/t-huang1) is an influential pioneer in this field.
 
+Image SR can still be divided into many fields. Two of them are General SR and Face SR. General SR means the task comes from different fields, we do not need to be specific. However, Face SR requires us to focus on face only. It is necessary for us to study it as a new branch because facial information is of great significance for identification and face contains more prior information which can be utilized to accomplish facial image restoration.
 
+At last, I list some important benchmark datasets.
 
-next, pending: what is sr? sr history? benchmark datasets ...
-
+General SR: Set 5, Set 14, Urban 100, BSD 100...
 
