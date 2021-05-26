@@ -12,7 +12,7 @@ TOP Conferences: CVPR, ICCV, ECCV, NIPS, ICML, ICLR, SIGKDD, IJCAI, AAAI, SIGGRA
 
 [Reference](http://webdocs.cs.ualberta.ca/~zaiane/htmldocs/ConfRanking.html)
 
-TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP
+TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV
 
 <!--http://latex.codecogs.com/svg.latex?  ![](http://latex.codecogs.com/svg.latex?\\frac{1}{1+sin(x)}) 这是我们的公式 -->
 
