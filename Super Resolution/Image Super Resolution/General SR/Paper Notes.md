@@ -12,6 +12,8 @@ This file will contain selected papers for general purpose in image SR.
 
 [Main Body](#main-body)
 + [Image Super-Resolution via Sparse Representation](#image-super-resolution-via-sparse-representation)
++ [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
++ 
 
 
 # Preface
@@ -61,3 +63,22 @@ The IFP Group was founded by Professor **Thomas S. Huang** (1936 - 2020). (NAE M
 
 When I am searching for sth related to L0-Norm, I find a concept named as `Compressed Sensing`(CS). 这种方法和稀疏表达比较类似，想要突破传统的等间隔采样与奈奎斯特采样定理的限制，aiming to sample less points but also recover original signal successfully. 针对这种思路，可以参考知乎文章[形象易懂讲解算法II——压缩感知](https://zhuanlan.zhihu.com/p/22445302)。
 
+## Image Super-Resolution Using Deep Convolutional Networks
+
+Chao Dong, Chen Change Loy, Kaiming He, Xiaoou Tang. Image Super-Resolution Using Deep Convolutional Networks. IEEE TPAMI 2016.
+
+[Paper and Code](http://mmlab.ie.cuhk.edu.hk/projects/SRCNN.html)
+
+[MMLab](http://mmlab.ie.cuhk.edu.hk/) CUHK  
+
+[SIAT](http://www.siat.ac.cn/) Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences
+
+Director of MMLab: [Xiaoou Tang](https://www.ie.cuhk.edu.hk/people/xotang.shtml) FIEEE(Class 2009), PhD MIT, MS University of Rochester, BS USTC
+
+Chao Dong Member of the SIAT, PhD CUHK MMLab, BEng BIT
+
+The idea of SRCNN was firstly proposed in `Learning a Deep Convolutional Network for Image Super-Resolution`, which was accepted by ECCV 2014. At that time, ResNet was not proposed. Consequently, SRCNN has shallow layers and you will find that it seems difficult to train SRCNN though it only has TWO layers. 一些关于网络层数对于SR影响的分析，在SRCNN提出的时候还是比较片面的。实际上，在后面的`VDSR`中，还是可以很明显地看到：深层网络对于SR很有帮助。
+
+SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The setting of CNN layers and 概念上面的迁移 都是和`Image Super-Resolution via Sparse Representation`对应的。
+
+## 
