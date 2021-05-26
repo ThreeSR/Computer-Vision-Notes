@@ -8,11 +8,15 @@ High-level tasks include image recognition, image classification, video understa
 
 Here are a list of TOP Conferences and Transactions in CV & CG & ML field.
 
-TOP Conferences: CVPR, ICCV, ECCV, NIPS, ICML, ICLR, SIGKDD, IJCAI, AAAI, SIGGRAPH
+TOP Conferences: CVPR, ICCV, ECCV, NIPS, ICML, ICLR, SIGKDD, IJCAI, AAAI, SIGGRAPH, ACM MM
 
 [Reference](http://webdocs.cs.ualberta.ca/~zaiane/htmldocs/ConfRanking.html)
 
-TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV
+TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV, JMLR, IEEE TVCG, ACM TOG
+
+[Reference](https://www.ccf.org.cn/Academic_Evaluation/AI/)
+
+[Reference](https://www.ccf.org.cn/Academic_Evaluation/CGAndMT/)
 
 <!--http://latex.codecogs.com/svg.latex?  ![](http://latex.codecogs.com/svg.latex?\\frac{1}{1+sin(x)}) 这是我们的公式 -->
 
