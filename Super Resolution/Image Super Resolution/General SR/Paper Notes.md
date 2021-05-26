@@ -13,7 +13,7 @@ This file will contain selected papers for general purpose in image SR.
 [Main Body](#main-body)
 + [Image Super-Resolution via Sparse Representation](#image-super-resolution-via-sparse-representation)
 + [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
-+ 
++ [Deep Residual Learning for Image Recognition](#deep-residual-learning-for-image-recognition)
 
 
 # Preface
@@ -81,4 +81,19 @@ The idea of SRCNN was firstly proposed in `Learning a Deep Convolutional Network
 
 SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The setting of CNN layers and 概念上面的迁移 都是和`Image Super-Resolution via Sparse Representation`对应的。
 
-## 
+## Deep Residual Learning for Image Recognition
+
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun. Deep Residual Learning for Image Recognition. CVPR 2016 Best Paper Award.
+
+[Paper](https://arxiv.org/abs/1512.03385)
+
+[Kaiming He](http://kaiminghe.com/) FAIR, PhD CUHK MMLab, BEng THU.
+
+This paper is really well-known because it provides us with a novel resolution to deal with deep networks.
+
+Actually, ResNet is a model built for high-level CV tasks. But the concept of Residual Learning is similar to Laplacian Filtering in Digital Image Processing. We can employ this character to super-resolve images like VDSR did. 
+
+尽管ResNet不是为了SR而生，但因为它的某些性质和SR十分契合，所以自VDSR之后，很多SR的网络里面都加入了残差学习的元素，比如identity mapping等内容...正是因为这个原因，对于学习SR的人而言，这篇文章也是必看的。
+
+
+
