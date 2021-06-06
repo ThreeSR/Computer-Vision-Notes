@@ -65,6 +65,10 @@ The IFP Group was founded by Professor **Thomas S. Huang** (1936 - 2020). (NAE M
 
 之所以对`0范数`比较上心，是因为sparse representation中，有对于表达更加稀疏的要求，所以对`0范数`比较在意。
 
+至于为什么需要更加稀疏，我认为应该有至少两个原因：
+1. 稀疏的数据可以降低运算复杂度；
+2. 稀疏的数据可以防止过拟合。
+
 When I am searching for sth related to L0-Norm, I find a concept named as `Compressed Sensing`(CS). 这种方法和稀疏表达比较类似，想要突破传统的等间隔采样与奈奎斯特采样定理的限制，aiming to sample less points but also recover original signal successfully. 针对这种思路，可以参考知乎文章[形象易懂讲解算法II——压缩感知](https://zhuanlan.zhihu.com/p/22445302)。
 
 [Table](#Table)
