@@ -90,7 +90,8 @@ Chao Dong Member of the SIAT, PhD CUHK MMLab, BEng BIT
 The idea of SRCNN was firstly proposed in `Learning a Deep Convolutional Network for Image Super-Resolution`, which was accepted by ECCV 2014. At that time, ResNet was not proposed. Consequently, SRCNN has shallow layers and you will find that it seems difficult to train SRCNN though it only has TWO layers. 一些关于网络层数对于SR影响的分析，在SRCNN提出的时候还是比较片面的。实际上，在后面的`VDSR`中，还是可以很明显地看到：深层网络对于SR很有帮助。
 
 在本篇文章中，有讨论到一些很实用的设定，到后面的几篇SR的文章都在使用：
-+ 第一个是**不同channel的超分** 。以前的文章会谈论到gray-scale或者single-channel的超分，这些超分的关注点在于luminance channel。当然了，除了single-channel的内容，还有团队将RGB的各个channel进行超分，最后综合在一起。不管是single-channel还是各个channel的综合，前人并没有分析`不同channel带来的影响`和`恢复全部channel的必要性`。
++ 一个是**不同channel的超分** 。以前的文章会谈论到gray-scale或者single-channel的超分，这些超分的关注点在于luminance channel。当然了，除了single-channel的内容，还有团队将RGB的各个channel进行超分，最后综合在一起。不管是single-channel还是各个channel的综合，前人并没有分析`不同channel带来的影响`和`恢复全部channel的必要性`。
++ 另一个是CNN的引入，到后来深度网络DNN的引入。
 
 SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The setting of CNN layers and 概念上面的迁移 都是和`Image Super-Resolution via Sparse Representation`对应的。
 
