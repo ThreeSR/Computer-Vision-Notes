@@ -98,6 +98,11 @@ SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The set
 
 ![image](https://user-images.githubusercontent.com/36061421/120927286-fd6c3d00-c712-11eb-8604-8863d929edbb.png)
 
+下面是CNN和sparse coding的对应：
+
+![image](https://user-images.githubusercontent.com/36061421/120961350-457d7500-c790-11eb-89bc-8cb527346bd4.png)
+
+
 **主要处理步骤**
 + 首先，将LR图像upscale到desired size，upscale的方法是`bicubic interpolation`。interpolated image用`Y`表示，这时候`Y`和ground truth（GT） image `X`是同样的size。为了表达的方便，称`Y`为LR图像。
 + 完成上面的预处理之后，网络主要完成三个步骤：
@@ -137,6 +142,8 @@ f1 = 9， f2 = 1， f3 = 5， n1 = 64， n2 = 32。特别说一下f2，这里f2�
 **和稀疏编码的比较**
 
 上面提到过，本篇文章CNN的思想来源于传统的稀疏编码的方法。主要的思想来源是[Image Super-Resolution via Sparse Representation](#image-super-resolution-via-sparse-representation)。
+
+这方面的比较，可以看上面的CNN与sparse coding的对应图。
 
 与传统方法相比，CNN的方法利用了更多的信息。
 
