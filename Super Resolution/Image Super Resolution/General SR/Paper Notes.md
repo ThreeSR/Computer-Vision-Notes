@@ -98,10 +98,53 @@ SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The set
 
 ![image](https://user-images.githubusercontent.com/36061421/120927286-fd6c3d00-c712-11eb-8604-8863d929edbb.png)
 
-处理的步骤：
+**主要处理步骤**
 + 首先，将LR图像upscale到desired size，upscale的方法是`bicubic interpolation`。interpolated image用`Y`表示，这时候`Y`和ground truth（GT） image `X`是同样的size。为了表达的方便，称`Y`为LR图像。
 + 完成上面的预处理之后，网络主要完成三个步骤：
- 
+     + `Patch extraction and representation`：这一步是从LR图像中提取一个f1 * f1大小的patch，使用了n1个filters。因此，一个patch对应一个维度为n1的vector。
+     + `Non-linear mapping`：这一步是非线性映射，将n1的vector映射到n2的vector。n1可以比n2更大，使得映射结果的维度更小，更加sparse。
+     + `Reconstruction`：这一步将上面得到的各个patch的结果，进行aggregate，生成最终的HR图像。
+
+**数学表达式**
+
+第一个步骤：
+![image](https://user-images.githubusercontent.com/36061421/120954890-c2095700-c782-11eb-8868-2a05835e084b.png)
+
+之所以是这种形式，和激活函数ReLU有关。里面的`W1 * Y + B1`就是卷积操作和bias。
+
+第二个步骤：
+![image](https://user-images.githubusercontent.com/36061421/120954914-c9306500-c782-11eb-8fff-22bb7a10887e.png)
+
+形式类比于第一步。
+
+第三个步骤：
+![image](https://user-images.githubusercontent.com/36061421/120954932-d2213680-c782-11eb-9d8e-01edfca4e3c9.png)
+
+对上面得到的结果进行aggregate，对结果进行averaging处理。这里的平均处理就是线性滤波的过程。
+
+损失函数：
+
+![image](https://user-images.githubusercontent.com/36061421/120955184-67bcc600-c783-11eb-8db3-284967fdc097.png)
+
+很直观的MSE方法，这种方法有助于PSNR的提升。实际上，不只是PSNR表现好，SSIM等indicator也不错。上式中的n是训练样本的数量。
+
+如果不使用MSE的方法也可以，但需要保证损失函数是可导的。
+
+**超参数设定**
+
+f1 = 9， f2 = 1， f3 = 5， n1 = 64， n2 = 32。特别说一下f2，这里f2设成1或者3、9都是可以的，但是如果设成3或9，那么对于原本patch的解释就要更加“广义”一些。设置成1，就是对原本的patch对应的vector进行非线性映射，不涉及太多解释的成分。这一点回想一下卷积的计算过程便可以明白。
+
+**和稀疏编码的比较**
+
+上面提到过，本篇文章CNN的思想来源于传统的稀疏编码的方法。主要的思想来源是[Image Super-Resolution via Sparse Representation](#image-super-resolution-via-sparse-representation)。
+
+与传统方法相比，CNN的方法利用了更多的信息。
+
+**训练**
+
+损失函数在上面已经展示了。
+
+梯度下降的方法是SGD；learning rate在不同层设置不同数值，比如前两层：10^-4，最后一层是10^-5。因为作者发现这样更好converge。
 
 
 [Table](#Table)
