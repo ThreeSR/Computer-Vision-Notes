@@ -100,7 +100,8 @@ SRCNN is inspired by `Image Super-Resolution via Sparse Representation`. The set
 
 处理的步骤：
 + 首先，将LR图像upscale到desired size，upscale的方法是`bicubic interpolation`。interpolated image用`Y`表示，这时候`Y`和ground truth（GT） image `X`是同样的size。为了表达的方便，称`Y`为LR图像。
-+ 
++ 完成上面的预处理之后，网络主要完成三个步骤：
+ 
 
 
 [Table](#Table)
