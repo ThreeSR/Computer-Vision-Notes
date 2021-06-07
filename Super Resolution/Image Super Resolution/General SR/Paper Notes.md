@@ -145,7 +145,13 @@ f1 = 9， f2 = 1， f3 = 5， n1 = 64， n2 = 32。特别说一下f2，这里f2�
 
 这方面的比较，可以看上面的CNN与sparse coding的对应图。
 
-与传统方法相比，CNN的方法利用了更多的信息。
+具体的细节这里不提及（因为我也没有深入了解这些数学原理），大概谈谈自己的想法，可能不对。
+
+作者将CNN和稀疏编码进行类比，先使用滤波器提取n1个维度的向量，这个向量就相当于对应一个patch的编码；这些滤波器相当于一个字典。中间的非线性映射代表着稀疏编码中的一些处理的迭代过程。最后得到HR对应的coding，再使用HR对应的字典，可以得到最终HR的输出。这样的过程其实是和[Image Super-Resolution via Sparse Representation](#image-super-resolution-via-sparse-representation)中的核心思想对应的。
+
+与传统方法相比：
++ CNN的方法利用了更多的信息，比如上述SRCNN，information包含了（9+5-1）^2 = 169 pixels，而传统方法只有81pixels。这里81是怎么得到的，需要看论文中对应的引文；
++ CNN方法的处理是端对端的映射，这其中包含了各种operation，好处在于可以一并optimize，更全面。
 
 **训练**
 
@@ -153,6 +159,37 @@ f1 = 9， f2 = 1， f3 = 5， n1 = 64， n2 = 32。特别说一下f2，这里f2�
 
 梯度下降的方法是SGD；learning rate在不同层设置不同数值，比如前两层：10^-4，最后一层是10^-5。因为作者发现这样更好converge。
 
+在训练数据的预处理上，需要将GT图片准备成f(sub) * f(sub) * c-pixel sub-images。这里需要强调：sub-images和patches在这里意义不同。patches需要averaging作为post-processing，因为它们overlapping，但是sub-images没有这个需求，而且被当做small images处理，是被randomly cropped from the training images。
+
+LR图像的合成来自于HR图像，使用高斯kernal，n倍降采样。之后对着模糊后的图片，进行n倍bicubic插值上采样，得到desired size，之后进行CNN处理。（这里对于低分辨率图像的处理还比较传统。其实使用bicubic或者其他降采样的手段，并不能够很好地模拟HR和LR的对应关系，这会导致SR的泛化能力较差。真实的SR更加复杂，这里的设定会导致网络最终学会的是怎么应对bicubic等降采样算法的方法，而不是真实地解决SR问题。）
+
+为了防止边缘影响（border effects），训练的时候，所有卷积层*都没有padding*。这样一来，最终的输出会smaller。但是：The MSE loss function is evaluated **only** by the difference between the central
+pixels of Xi and the network output.
+
+最后特别说明：尽管使用fixed size image进行training，但可以使用各种不同size的image进行testing。
+
+**实验部分**
+
+主要进行以下实验：
+1. the impact of using different datasets on the model performance
+2. explore different architecture designs of the network, and study the relations between super-resolution performance and factors like depth, number of filters, and filter sizes
+3. extend the network to cope with color images and evaluate the performance on
+different channels
+
+针对1，发现使用larger dataset会有提升，但是没有想象中的多。进行对比的是set91和ImageNet。原因是：对于low-level的任务，其实set91已经包含了足够多的variability of natural images，我们底层视觉更关注图像细节纹理本身，不在乎图像具体包含了什么内容，有几个人，如何识别...但对于high-level任务，肯定是见多识广，所以larger dataset可以带来更好的结果。
+
+针对2，可以有以下几个值得关注的点：
++ filter number：也就是network width。数量越多，performance越好，但是更加time-consuming，这是一个trade-off，但不管怎么说，比原来方法好；
++ filter size：同样也是performance和speed的trade-off
++ number of layers：在这篇文章发表的时候，还面临着网络退化的问题。所以SRCNN在加深的过程中，也遇到了很多问题。在当时是一个很open question的事情。但后来有ResNet，VDSR...等结构，加深了效果更好了。所以这里的结果参考的价值不大。
+
+针对3，It is also worth noting that the improvement compared withthe single-channel network is not that significant (i.e., 0.07 dB). This indicates that the Cb, Cr channels barely help in improving the performance.（具体的实验很多，详见文章。这样的结论为后续使用Y channel奠定了基础）
+
+除了以上的三点，其他是和previous SOTA模型的比较。
+
+**总结**
+
+总的来说，SRCNN很有开创性价值，但也有当时的局限性，仍不失为好文章。
 
 [Table](#Table)
 
