@@ -26,7 +26,7 @@ The paper listed in this file will be in chronological order. I will provide you
 
 Some abbreviations you may need to know before next part:
 
-`NAE = National Academy of Engineering` `NAS = National Academy of Science` `CAS = Chinese Academy of Science` `CAE = Chinese Academy of Engineering`
+`NAE = National Academy of Engineering` `NAS = National Academy of Science` `CAS = Chinese Academy of Science` `CAE = Chinese Academy of Engineering` `GT = Ground Truth`
 
 Notice: Chinese(Simplified) and English will be used in this file.
 
