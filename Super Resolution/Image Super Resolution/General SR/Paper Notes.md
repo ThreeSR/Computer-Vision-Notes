@@ -247,6 +247,20 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 2. 现有方法通过`l2`范数来当做loss，会使得预测出来的高分辨率image模糊；
 3. 大多数方法在复原HR图像的时候，都是通过一步实现升采样。这样做的话，增加了large scale的训练难度。In addition, existing methods cannot generate intermediate SR predictions at multiple resolutions. As a result, one needs to train a large variety of models for various applications with different desired upsampling scales and computational loads.
 
+为了解决上面的问题，作者提出了LapSRN。这个网络可以循序渐进地进行超分，在每一个分辨率下（respective level），都会predict sub-band residuals。所谓的sub-band residuals就是respective level下，升采样得到的image和GT（ground truth）的不同。
+
+下面是网络结构：
+
+![image](https://user-images.githubusercontent.com/36061421/121687164-9aa0ea00-caf4-11eb-9b04-69db7b4e3ab8.png)
+
+仔细看还是会发现，这就好像是不同level的VDSR进行cascade，下面是VDSR：
+
+![image](https://user-images.githubusercontent.com/36061421/121687249-b73d2200-caf4-11eb-9f45-9c49b9f16f76.png)
+
+那么这么做，有什么好处？
+1. 提升了准确度：直接extract feature maps from LR，jointly optimizes the upsampling filters；
+2. 速度快：LapSRN achieves real-time speed on most of the evaluated datasets；
+3. Progressive reconstruction. For scenarios with limited computing resources, our 8x model can still perform 2x or 4x SR by **simply bypassing** the computation of residuals at finer levels. Existing CNN-based methods, however, do not offer such flexibility. 此外，还可以用于一些视频超分任务。这里说的simply bypassing就是把网络长度缩短，那么就可以只用于4x的SR任务，加长就可以变成8x的任务，很flexible。
 
 
 
