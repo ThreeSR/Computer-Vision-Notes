@@ -264,11 +264,31 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 
 
 
+[Table](#Table)
+
 #### Image Super-Resolution Using Very Deep Residual Channel Attention Networks
 
 [Table](#Table)
 
 #### Toward Real-World Single Image Super-Resolution A New Benchmark and A New Model
+
+PolyU [Visual Computing Lab](http://www4.comp.polyu.edu.hk/~cslzhang/)
+
+Director of the lab: [Lei Zhang](https://www4.comp.polyu.edu.hk/~cslzhang/)  DAMO Academy && PolyU FIEEE PhD & MS NWPU
+
+Jianrui Cai, Hui Zeng, Hongwei Yong, Zisheng Cao, Lei Zhang. Toward Real-World Single Image Super-Resolution: A New Benchmark and A New Model. ICCV 2019.
+
+Paper Inplementation:
+
+[Pytorch](https://github.com/Alan-xw/RealSR)  Reference article : [Zhihu](https://zhuanlan.zhihu.com/p/96973488)
+
+[Matlab](https://github.com/csjcai/RealSR) **Official**
+
+这篇文章指出了关于现有超分方法的不足，尤其是LR-HR pairs上的问题。如果仅仅是bicubic，没有办法体现自然图像中LR和HR之间的规律，最终学到的只是如何克服bicubic这个算法而已，并没有学到真实的分辨率规律。
+
+这篇文章前半段提出一种更好的，搜集数据的办法。作者使用两台专业相机，通过调焦的方法实现高低分辨率图像对的采集，之后alignment再training，得到better结果。
+
+文章后半段提出一种新的网络结构。
 
 [Table](#Table)
 
