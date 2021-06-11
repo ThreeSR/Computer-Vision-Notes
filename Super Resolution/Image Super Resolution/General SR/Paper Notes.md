@@ -262,11 +262,33 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 2. 速度快：LapSRN achieves real-time speed on most of the evaluated datasets；
 3. Progressive reconstruction. For scenarios with limited computing resources, our 8x model can still perform 2x or 4x SR by **simply bypassing** the computation of residuals at finer levels. Existing CNN-based methods, however, do not offer such flexibility. 此外，还可以用于一些视频超分任务。这里说的simply bypassing就是把网络长度缩短，那么就可以只用于4x的SR任务，加长就可以变成8x的任务，很flexible。
 
+下面的表格是不同方法的比较：
+
+![image](https://user-images.githubusercontent.com/36061421/121689442-2e73b580-caf7-11eb-9017-8679fc8af001.png)
+
+通过上面的比较，不难看出LapSRN涉及到了一开始提出的三个问题中的全部，即：computational complexity和loss function的问题。正是因为l2 loss使得overly smooth，所以使用`Charbonnier`作为loss。使用一种progressive的结构，一方面使得计算不那么difficult，另一方面可以freely truncate the network to obtain different scales on distinct purposes.
+
+
+
 
 
 [Table](#Table)
 
 #### Image Super-Resolution Using Very Deep Residual Channel Attention Networks
+
+NEU (Boston, USA) [SmileLab](https://web.northeastern.edu/smilelab/)
+
+Director of the lab : [Yun Fu](http://www1.ece.neu.edu/~yunfu/) FIEEE FIAPR FSPIE FOSA; PhD & MS UIUC, MEng & BS XJTU.
+
+RCAN
+
+Image Super-Resolution Using Very Deep Residual Channel Attention Networks. ECCV 2018.
+
+Official Code: [https://github.com/yulunzhang/RCAN](https://github.com/yulunzhang/RCAN) (PyTorch Version)
+
+RCAN mainly concentrates on the allocation of channel-wise attention, which should be rescaled according to different image information in a distinct image. 
+
+Novelty: RIR(Residual in Residual) Structure, Channel Attention and RCAN(Residual Channel Attention Network) and Long Skip Connection and Short Skip Connection.
 
 [Table](#Table)
 
