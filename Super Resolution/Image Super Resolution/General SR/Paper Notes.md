@@ -230,6 +230,23 @@ Director of the Lab: [Kyoung Mu Lee](https://cv.snu.ac.kr/index.php/kmlee/) FIEE
 
 [Table](#Table)
 
+#### Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution
+
+University of California, Merced [Vision and Learning Lab](http://vllab.ucmerced.edu/)
+
+UCM is the newest campus of UC system. Currently, it is still under construction. 
+
+Director of the lab : [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/) FIEEE
+
+[LapSRN](http://vllab.ucmerced.edu/wlai24/LapSRN/); [Pytorch Version](https://github.com/twtygqyy/pytorch-LapSRN)
+
+Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 2017.
+
+这篇文章提出了拉普拉斯金字塔的结构，解决超分问题。文章的开头，点出了目前三个超分问题：
+1. 当下的超分方法，需要将原本的image通过bicubic变成desired size，再输入到网络当中。这样increase computational complexity，此外，often results in visible reconstruction artifacts。
+2. 
+
+
 #### Image Super-Resolution Using Very Deep Residual Channel Attention Networks
 
 [Table](#Table)
