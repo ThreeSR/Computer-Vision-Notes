@@ -15,7 +15,7 @@ This file will contain selected papers for general purpose in image SR.
 + [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
 + [Deep Residual Learning for Image Recognition](#deep-residual-learning-for-image-recognition)
 + [Accurate Image Super-Resolution Using Very Deep Convolutional Networks](#accurate-image-super-resolution-using-very-deep-convolutional-networks)
-+ [](#url)
++ [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
 + [Image Super-Resolution Using Very Deep Residual Channel Attention Networks](#image-super-resolution-using-very-deep-residual-channel-attention-networks)
 + [Toward Real-World Single Image Super-Resolution: A New Benchmark and A New Model](#toward-real-world-single-image-super-resolution-a-new-benchmark-and-a-new-model)
 
@@ -243,8 +243,11 @@ Director of the lab : [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/) FI
 Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 2017.
 
 这篇文章提出了拉普拉斯金字塔的结构，解决超分问题。文章的开头，点出了目前三个超分问题：
-1. 当下的超分方法，需要将原本的image通过bicubic变成desired size，再输入到网络当中。这样increase computational complexity，此外，often results in visible reconstruction artifacts。
-2. 
+1. 当下的超分方法，需要将原本的image通过bicubic变成desired size，再输入到网络当中。这样increase computational complexity，此外，often results in visible reconstruction artifacts；
+2. 现有方法通过`l2`范数来当做loss，会使得预测出来的高分辨率image模糊；
+3. 大多数方法在复原HR图像的时候，都是通过一步实现升采样。这样做的话，增加了large scale的训练难度。In addition, existing methods cannot generate intermediate SR predictions at multiple resolutions. As a result, one needs to train a large variety of models for various applications with different desired upsampling scales and computational loads.
+
+
 
 
 #### Image Super-Resolution Using Very Deep Residual Channel Attention Networks
