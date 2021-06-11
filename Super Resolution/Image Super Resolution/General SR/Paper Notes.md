@@ -268,7 +268,22 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 
 通过上面的比较，不难看出LapSRN涉及到了一开始提出的三个问题中的全部，即：computational complexity和loss function的问题。正是因为l2 loss使得overly smooth，所以使用`Charbonnier`作为loss。使用一种progressive的结构，一方面使得计算不那么difficult，另一方面可以freely truncate the network to obtain different scales on distinct purposes.
 
+下面来简单介绍一下什么是`Charbonnier Loss`以及使用这个方法的原因（个人看法）：
 
+![image](https://user-images.githubusercontent.com/36061421/121701771-d42d2180-cb03-11eb-9965-c08b122c9c6e.png)
+
+这种loss很像L2范数，但仔细看看，因为epsilon取值很小，所以可以看作是L1范数（f(x) = |x|）的升级版。根据[论坛讨论的内容](https://forums.fast.ai/t/making-sense-of-charbonnier-loss/11978)，有三种看法：
+1. 添加epsilon，防止数值等于0；
+2. |x|(L1范数)在0不可以求微分，但是`Charbonnier Loss`可以；
+3. 根据x的大小变化，和epsilon接近的时候，就是L2范数的性质，和epsilon远（比epsilon大）的时候，表现L1范数的性质。这样的设置可以利用两种范数的特性。
+
+我个人倾向于第二种看法。对于loss function，后续还有优化（optimization）的过程，保证它不在一些特殊点不可微分，还是很重要的。至于为什么不可微分，[点击这里](https://www.shuxuele.com/calculus/differentiable.html)。
+
+下面，我还是把`f(x) = |x|`不可微分的原因截出来：
+
+![image](https://user-images.githubusercontent.com/36061421/121702985-ef4c6100-cb04-11eb-9b32-ee36fc47d841.png)
+
+至于为什么`Charbonnier Loss`可以微分，这就需要自己手算一下了，很简单。
 
 
 
