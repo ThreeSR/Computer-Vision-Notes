@@ -15,7 +15,10 @@ This file will contain selected papers for general purpose in image SR.
 + [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
 + [Deep Residual Learning for Image Recognition](#deep-residual-learning-for-image-recognition)
 + [Accurate Image Super-Resolution Using Very Deep Convolutional Networks](#accurate-image-super-resolution-using-very-deep-convolutional-networks)
++ [Image Super-Resolution Using Dense Skip Connections](url)
 + [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
++ [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](url)
++ [Enhanced Deep Residual Networks for Single Image Super-Resolution](url)
 + [Image Super-Resolution Using Very Deep Residual Channel Attention Networks](#image-super-resolution-using-very-deep-residual-channel-attention-networks)
 + [Toward Real-World Single Image Super-Resolution: A New Benchmark and A New Model](#toward-real-world-single-image-super-resolution-a-new-benchmark-and-a-new-model)
 
