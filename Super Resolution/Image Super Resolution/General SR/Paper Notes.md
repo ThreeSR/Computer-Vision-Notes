@@ -272,6 +272,11 @@ Director of the Lab: [Kyoung Mu Lee](https://cv.snu.ac.kr/index.php/kmlee/) FIEE
 
 上面提到了，残差学习很好地解决了网络退化的问题，使得网络的层数得以进一步加深。这篇文章显然在SRCNN之后。基于SRCNN和ResNet的思想，对原有的SRCNN提出了不足和修改方法，得到了现有的VDSR。
 
+**Contribution**
+
++ DNN收敛慢，但是增加learning rates可能导致梯度爆炸。本文使用了residual-learning和gradient clipping两种方法解决上面的问题；
++ VDSR可以较好地解决multi-scale的SR问题。 Cope with multiscale SR problem in a single network.
+
 **网络结构**
 
 ![image](https://user-images.githubusercontent.com/36061421/121776959-45330e80-cbc2-11eb-859a-8aa9987e06f2.png)
@@ -293,6 +298,34 @@ where f(x) is the network prediction.
 
 **这种只针对于residual而言的loss function，是很有意义的**。在后面的文章，比如《Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution》中，就有类似的应用。
 
+对应到开头讲的contribution，training这块文中有提及High Learning Rates for Very Deep Networks和Adjustable Gradient Clipping，具体细节大家在自己training的时候可以细致看看，不再赘述。有意思的是一个比较：Our 20-layer network training is done within 4 hours whereas 3-layer SRCNN takes several days to train. 这凸显了VDSR的优势，回应了SRCNN中对于“the deeper, the better”的“质疑”，证明the deeper确实可以the better。
+
+下面谈谈我很有兴趣的部分，就是contribution中的multi-scale的问题。用一种很朴素的机器学习观点来看SR问题，就是给一个LR-HR Pair，然后training。这个pair中，LR和HR应该是一个特定的scale。这样一来，train出来的网络也是specific scale。但是VDSR这里使用single network实现了multi-scale，我还是很有兴趣的。
+
+原文的内容是：We need an economical way to store and retrieve networks. For this reason, we also train a multi-scale model. With this approach, parameters are shared across all predefined
+scale factors. Training a multi-scale model is straightforward. **Training datasets for several specified scales are combined into one big dataset**.
+
+Data preparation is similar to SRCNN with some differences. Input patch size is now equal to the size of the receptive field and images are divided into sub-images with no overlap. A mini-batch consists of 64 sub-images, **where sub-images from different scales can be in the same batch**.
+
+上面bold的部分是数据处理的重点，也是和传统想法不同的地方。
+
+关于这方面的实验，一开始是关于single scale。发现如果train single scale，那么没被train的scale拿去test，效果凄惨（甚至不如bicubic）。比如train 2x，拿3x去test，效果“感人”。之后作者思考，如果一个网络一口气train各种scale，那么和single scale比，会不会更有优势？于是作者根据2x，3x，4x，train了四个网络，涉及的scale分别是：{2,3,4}，{2,3}，{2,4}，{3,4}。结果发现，这个多个scale train出来网络效果真的不差（compared to single scale network）。而且，比较amazing的是：**Another pattern is that for large scales (x3; 4), our multiscale network outperforms single-scale network**。由此，作者得到结论：we observe that training multiple scales boosts the performance for large scales. 这种training strategy是有意义的。
+
+下面是实验结果：
+
+![image](https://user-images.githubusercontent.com/36061421/121778186-6b5bad00-cbc8-11eb-99c3-299883ead4a1.png)
+
+具体的代码操作，还是需要看文章中开源的代码。
+
+**训练细节**
+
+training dataset: 291, namely BSDS 200 + T91.
+
+test dataset: Set5, Set14, Urban 100, B100.
+
+Training Parameters: We train all experiments over 80 epochs (9960 iterations with **batch size 64**). Learning rate was initially set to 0.1 and **then decreased by a factor of 10 every 20 epochs**. In total, the learning rate was decreased 3 times, and the learning is stopped after 80 epochs. Training takes **roughly 4 hours** on GPU Titan Z.
+
+总结一下：本文引入residual learning和gradient clipping对于DNN训练过程中的问题解决与处理，很有意义。此外，multi-scale的training也很有意思。
 
 [Table](#Table)
 
