@@ -208,6 +208,17 @@ Actually, ResNet is a model built for high-level CV tasks. But the concept of Re
 
 尽管ResNet不是为了SR而生，但因为它的某些性质和SR十分契合，所以自VDSR之后，很多SR的网络里面都加入了残差学习的元素，比如identity mapping等内容...正是因为这个原因，对于学习SR的人而言，这篇文章也是必看的。
 
+关于high-level或者这篇文章的实验部分，这里不再赘述，文章内容非常全面。这里谈谈自己对于残差学习和SR之间的见解。
+
+![image](https://user-images.githubusercontent.com/36061421/121775649-87a51d00-cbbb-11eb-86d7-893839a07766.png)
+
+很多人可能很疑惑，残差学习究竟在干什么？分析一下上面这张图，其实就是把主要学习对象从一个对象的全部变成了这个对象的部分（residual）。因为你会发现，这个对象会有一个identity mapping的过程，最终的output减去identity mapping的内容，就是学到的residual。也就是说，真正学习的内容是residual。
+
+上面的过程其实和图像锐化的过程相似：
+
+(http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
+
+
 [Table](#Table)
 
 #### Accurate Image Super-Resolution Using Very Deep Convolutional Networks
