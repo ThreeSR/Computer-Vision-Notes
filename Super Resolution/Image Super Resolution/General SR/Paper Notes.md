@@ -216,7 +216,10 @@ Actually, ResNet is a model built for high-level CV tasks. But the concept of Re
 
 上面的过程其实和图像锐化的过程相似：
 
-(http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
+![](http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
+![](http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
+
+![](https://latex.codecogs.com/svg.latex?\\g(x,%20y)%20=%20f(x,%20y)%20+%20c[\nabla^2f(x,%20y)])
 
 
 [Table](#Table)
