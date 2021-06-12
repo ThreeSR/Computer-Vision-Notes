@@ -220,7 +220,35 @@ Actually, ResNet is a model built for high-level CV tasks. But the concept of Re
 
 ![image](https://user-images.githubusercontent.com/36061421/121776170-f1bec180-cbbd-11eb-9964-8be253714a5c.png)
 
-上面的式子中，f(x, y)代表输入图像，g(x, y)代表锐化后的图像。显然，对于图像锐化的操作来说，重点在于带有拉普拉斯算子的那一项。这就很像残差学习。f(x, y)对应的是identity mapping的部分，g(x, y)对应着输出的部分，residual就是![](http://latex.codecogs.com/svg.latex?\nabla^2f(x, y))
+上面的式子中，f(x, y)代表输入图像，g(x, y)代表锐化后的图像。显然，对于图像锐化的操作来说，重点在于带有拉普拉斯算子的那一项。这就很像残差学习。f(x, y)对应的是identity mapping的部分，g(x, y)对应着输出的部分，residual就是拉普拉斯的部分。至此，图像锐化和残差学习对应上了。
+
+如果觉得上面抽象，那么下面是实验的结果：
+
+假如输入是一张月亮的图像：
+
+![moon](https://user-images.githubusercontent.com/36061421/121776402-46167100-cbbf-11eb-9510-f176340a9257.jpg)
+
+可以明显看到，月亮的表面（坑坑洼洼的地方）的轮廓不是很清晰。这是f(x, y)。
+
+这时候进行拉普拉斯滤波：
+
+![moon2](https://user-images.githubusercontent.com/36061421/121776439-69412080-cbbf-11eb-81e8-3555e0f4a5f3.jpg)
+
+可以得到一些细致的边缘。这里对应公式中的拉普拉斯项。
+
+二者叠加，得到下面的结果：
+
+![moon3](https://user-images.githubusercontent.com/36061421/121776451-8675ef00-cbbf-11eb-81ec-3d7dda898fbf.jpg)
+
+看上去对比度比较差，可以自然地联想到直方图均衡化，得到最终结果：
+
+![moon4](https://user-images.githubusercontent.com/36061421/121776466-9c83af80-cbbf-11eb-90fa-e7f499e99b72.jpg)
+
+上面的图就已经可以满足大多数人的需求了。所以我们可以发现，在图像清晰化的过程中，拉普拉斯滤波结果的叠加很关键，这就相当于对应到残差学习中，残差的内容是很关键的。我们在超分或者清晰化图像的过程中，我们的需求就是残差的内容，这就和使用残差学习的ResNet对应上了。因此，在超分中可以很好地利用残差网络的特点。
+
+基于这种关联性，在ResNet提出后，有了VDSR等网络。
+
+当然了，关于residual learning带来的好处，还有很多，比如防止网络退化，防止backpropagation的时候gradient vanishing...这些内容可以详见文章；关于拉普拉斯算子的一些具体内容，以及为什么这么做可以提取图像边缘细节，还会涉及比较多的内容，详见冈萨雷斯的《数字图像处理（第三版）》，这本书非常好且详细。
 
 [Table](#Table)
 
