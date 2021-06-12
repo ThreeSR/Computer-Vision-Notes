@@ -242,6 +242,14 @@ Director of the lab : [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/) FI
 
 Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 2017.
 
+在解析这篇文章之前，先来谈谈什么是拉普拉斯金字塔。
+
+![什么是拉普拉斯金字塔和高斯金字塔](https://user-images.githubusercontent.com/36061421/121775358-ab676380-cbb9-11eb-9530-0a1d30cd3820.jpg)
+
+上面的图来自于冈萨雷斯的《数字图像处理（第三版）》
+
+在后面介绍这篇文章的model时，可以看到image reconstruction部分就是一个拉普拉斯金字塔。了解拉普拉斯金字塔还是很有用的，因为比较多的SR文章会涉及这个知识点。同时，你会发现这种residual的感觉就是ResNet的感觉。经过VDSR之后，大家都能更好地意识到residual learning对于SR领域的重要性。
+
 这篇文章提出了拉普拉斯金字塔的结构，解决超分问题。文章的开头，点出了目前三个超分问题：
 1. 当下的超分方法，需要将原本的image通过bicubic变成desired size，再输入到网络当中。这样increase computational complexity，此外，often results in visible reconstruction artifacts；
 2. 现有方法通过`l2`范数来当做loss，会使得预测出来的高分辨率image模糊；
