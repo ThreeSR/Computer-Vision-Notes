@@ -285,7 +285,36 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 
 至于为什么`Charbonnier Loss`可以微分，这就需要自己手算一下了，很简单。
 
+**网络结构**
 
+从上面的网络结构图可以看出，网络是逐个level进行超分的。如果`S`代表scale factor，那么就会有![](http://latex.codecogs.com/svg.latex?\\log_{2}S)个levels。举一个例子，比如scale = 8，那么有3个sub-networks。
+
+每一个sub-network，由两部分组成，一个是：Feature extraction，另一个是：Image reconstruction。
++ 对于feature extraction，有多个卷积层和一个转置卷积层。多个卷积层用于reconstruct a residual image at level s，转置卷积用于upsample image，以便送到下一个level。每一次upsample就是进行2x的操作，所以这一点也符合上面scale factor和S levels的关系。
++ 对于image reconstruction，The upsampled image is then combined (using element-wise summation) with the predicted residual image from the feature extraction branch to produce a high-resolution output image.
+
+经过上面的处理，一个level就结束了，送到下一个level。下一个level继续做类似的事情，整个网络就cascade起来了。
+
+**损失函数**
+
+其实这个函数上面介绍过了，具体计算可以看论文。这里简单分析一下：
++ 首先为什么是这样的形式？这是因为学习的内容是**sub-band residual image**，所以loss function是这样的形式
++ 再者，我们可以看到，如果使用这样的loss function和这样的结构，**那么其实每一层都会有loss** 。假设手头有一张HR的照片，那么每一层的GT就有了，就是根据原本的GT进行downscale而来。每一层都有学习目标，每一层都是supervision。用这样的方法可以train出来LapSRN。
++ 综合上面的内容：**LapSRN就是progressive的过程，一步步进行2x操作得到目标scale** 。相比于原本直接8x的操作，LapSRN放慢了步调，一步分三步走。在放慢步调的时候，通往8x的道路上，我们可以同时得到2x和4x的结果。这就是文中说的：our 8x model can produce 2x, 4x and 8x super-resolution results **in one feed-forward pass**.
+
+**实验部分**
+
+这部分无非是验证拉普拉斯金字塔网络的结构有效性，loss function的有效性。详见论文。
+
+**Limitations**
+
+![image](https://user-images.githubusercontent.com/36061421/121763726-d7122b80-cb70-11eb-9abd-c1fa0b7fe515.png)
+
+第一个不足是：当原本image的结构信息太少的时候，难以进行超分复原。这种情况多发生在8x降采样之后，这时图像包含的信息太少了。
+
+第二个不足是：网络size有点大。如果要去reduce parameters，可以replace the deep convolutional layers at each level with recursive layers.
+
+最后谈谈个人意见：如果一口气需要2x，4x，8x的结果，这个网络是方便的；如果需要large scale factor的复原，这个网络也不错。但如果只是需要2x的结果，用这个网络可能没办法得到一个非常好的结果。通篇看下来，个人觉得progressively process SR problem的想法是本文很大的卖点，如果没办法很好地利用这个性质，可能没办法发挥整个网络的最佳功效。
 
 [Table](#Table)
 
