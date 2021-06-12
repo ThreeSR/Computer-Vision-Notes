@@ -216,11 +216,11 @@ Actually, ResNet is a model built for high-level CV tasks. But the concept of Re
 
 上面的过程其实和图像锐化的过程相似：
 
-![](http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
-![](http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)])
+<!-- ![](http://latex.codecogs.com/svg.latex?\\g(x, y) = f(x, y) + c[\nabla^2f(x, y)]) -->
 
-![](https://latex.codecogs.com/svg.latex?\\g(x,%20y)%20=%20f(x,%20y)%20+%20c[\nabla^2f(x,%20y)])
+![image](https://user-images.githubusercontent.com/36061421/121776170-f1bec180-cbbd-11eb-9964-8be253714a5c.png)
 
+上面的式子中，f(x, y)代表输入图像，g(x, y)代表锐化后的图像。显然，对于图像锐化的操作来说，重点在于带有拉普拉斯算子的那一项。这就很像残差学习。f(x, y)对应的是identity mapping的部分，g(x, y)对应着输出的部分，residual就是![](http://latex.codecogs.com/svg.latex?\nabla^2f(x, y))
 
 [Table](#Table)
 
