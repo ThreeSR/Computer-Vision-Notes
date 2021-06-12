@@ -268,7 +268,31 @@ Computer Vision Laboratory(CVLab)
 
 Director of the Lab: [Kyoung Mu Lee](https://cv.snu.ac.kr/index.php/kmlee/) FIEEE(Class 2021), Member of KAST(the Korean Academy of Science and Technology), PhD USC
 
-这篇文章很有意义，因为它融合了ResNet的思想，将残差学习带入到SR之中。关于为什么残差学习适用于SR，之后分析。
+这篇文章很有意义，因为它融合了ResNet的思想，将残差学习带入到SR之中。
+
+上面提到了，残差学习很好地解决了网络退化的问题，使得网络的层数得以进一步加深。这篇文章显然在SRCNN之后。基于SRCNN和ResNet的思想，对原有的SRCNN提出了不足和修改方法，得到了现有的VDSR。
+
+**网络结构**
+
+![image](https://user-images.githubusercontent.com/36061421/121776959-45330e80-cbc2-11eb-859a-8aa9987e06f2.png)
+
+Our Network Structure. We cascade a pair of layers (convolutional and nonlinear) repeatedly. An interpolated low-resolution (ILR) image goes through layers and transforms into a high-resolution (HR) image. The network predicts a residual image and the addition of ILR and the residual gives the desired output. We use 64 filters for each convolutional layer and some sample feature maps are drawn
+for visualization. Most features after applying rectified linear units (ReLu) are zero.
+
+值得注意的是：网络结构上面的灰度图是visualization的用途，正好是8 * 8 = 64 feature maps。上面的结构和前面谈到的ResNet结构，和拉普拉斯锐化的结构是相通的。
+
+**训练**
+
+这篇文章用的是L2范数。一种常见的思路是：假设`f(x)`是predicted image，`y`是GT，那么求解`(y - f(x))`的L2范数，作为loss function即可。但仔细想想，这里用的是residual image，我们其实没必要把整个图像拿过来求loss function，我们关注residual就好，因此：
+
+As the input and output images are largely similar, we define a residual image `r = y - x`, where most values are likely to be zero or small. We want to predict this residual image. The loss function now becomes :
+
+![image](https://user-images.githubusercontent.com/36061421/121777200-73fdb480-cbc3-11eb-9585-eb20945fed74.png)
+
+where f(x) is the network prediction.
+
+**这种只针对于residual而言的loss function，是很有意义的**。在后面的文章，比如《Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution》中，就有类似的应用。
+
 
 [Table](#Table)
 
