@@ -15,7 +15,7 @@ This file will contain selected papers for general purpose in image SR.
 + [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
 + [Deep Residual Learning for Image Recognition](#deep-residual-learning-for-image-recognition)
 + [Accurate Image Super-Resolution Using Very Deep Convolutional Networks](#accurate-image-super-resolution-using-very-deep-convolutional-networks)
-+ [Image Super-Resolution Using Dense Skip Connections](url)
++ [Image Super-Resolution Using Dense Skip Connections](image-super-resolution-using-dense-skip-connections)
 + [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
 + [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](url)
 + [Enhanced Deep Residual Networks for Single Image Super-Resolution](url)
@@ -332,6 +332,28 @@ Training Parameters: We train all experiments over 80 epochs (9960 iterations wi
 
 [Table](#Table)
 
+#### Image Super-Resolution Using Dense Skip Connections
+
+[Paper](https://openaccess.thecvf.com/content_ICCV_2017/papers/Tong_Image_Super-Resolution_Using_ICCV_2017_paper.pdf)
+
+[Imperial Vision](http://www.imperial-vision.com/)
+
+Both of the CEO and CTO in Imperial Vision graduated from IC.
+
+本篇文章借鉴了DenseNet的思想：
+
+![image](https://user-images.githubusercontent.com/36061421/121796161-a94ce580-cc49-11eb-9d6e-7ff4a5ab788d.png)
+
+提出了SRDenseNet：
+
+![image](https://user-images.githubusercontent.com/36061421/121796165-b23db700-cc49-11eb-93d4-c24a130b4387.png)
+
+如上，有三种结构。对于第三种，因为增加的connection已经很多了，所以又增加了bottleneck layer。这个layer就是1 * 1的conv，目的就是reduce feature maps。
+
+作者分析了上面的三种结构，发现3>2>1。文章中分析的是，受益于低层特征和高层特征的结合，超分辨率重建的性能得到了提升。像第三种结构把所有深度层的特征都串联起来，得到了最佳的结果，说明不同深度层的特征之间包含的信息是互补的。
+
+[Table](#Table)
+
 #### Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution
 
 University of California, Merced [Vision and Learning Lab](http://vllab.ucmerced.edu/)
@@ -465,6 +487,8 @@ Paper Inplementation:
 这篇文章前半段提出一种更好的，搜集数据的办法。作者使用两台专业相机，通过调焦的方法实现高低分辨率图像对的采集，之后alignment再training，得到better结果。
 
 文章后半段提出一种新的网络结构。
+
+总体来说，文章的针对性比较强。因为文中使用的提取照片的方法，和绝大多数人获取照片的方式不同。这样的话，在图片本身的性质上，就会有特别的侧重点。文章提出的关于image matching的改进和后续网络的改进，都是针对于自己制作的RealSR数据集而言。因此从更宽泛的角度而言，这篇文章的很多思想不太好延展。但是RealSR的提出确实点到了目前SR方面的痛点，所以还是非常有意义的。推荐大家看一看。
 
 [Table](#Table)
 
