@@ -337,6 +337,37 @@ Training Parameters: We train all experiments over 80 epochs (9960 iterations wi
 
 本文使用递归神经网络来处理SR问题，这是递归神经网络第一次用于SR问题。
 
+**Contribution**
+
+文中提出的模型为DRCN，主要的contribution有两个：
+1. recursive-supervision；这个贡献使得整个网络更好train，便于网络加深，否则会very likely面临gradient exploding和vanishing的问题；
+2. skip-connection；connection的灵感源于两点：1.ResNet； 2.For SR, input and output images are **highly correlated**.
+
+**Network Architecture**
+
+![image](https://user-images.githubusercontent.com/36061421/121809765-b04b1680-cc90-11eb-8697-74fe687ea646.png)
+
+网络主要分为三个部分：
++ Embedding network：这一部分之前需要将image interpolate到desired size，然后takes the input image (grayscale or RGB) and represents it as a set of feature maps. Intermediate representation used to pass information to the inference net largely depends on how the inference net internally represent its feature maps in its hidden layers. Learning this representation is done end-to-end altogether with learning other sub-networks.简单来说就是为下面的Inference network做准备。
++ Inference network：这是递归网络的核心部分。Analyzing a large image region is done by a single recursive layer. Each recursion applies the same convolution followed by a rectified linear unit. With convolution filters larger than 1 × 1, the receptive field is widened with every recursion.
++ Reconstruction net：While feature maps from the final application of the recursive layer represent the high-resolution image, transforming them (multi-channel) back into the original image space (1 or 3-channel) is necessary. reconstruction net是similar to SRCNN的最后一层的。
+
+如果将Inference network展开，那么得到下面的结构：
+
+![image](https://user-images.githubusercontent.com/36061421/121810024-c1e0ee00-cc91-11eb-9977-c960b8ff331c.png)
+
+看到这里，可能有人会将Recursive Network和Recurrent Network做比较。参考[知乎](https://www.zhihu.com/question/36824148)上面的内容，我将比较好的回答放在下面。（因为目前没有深入研究这个内容，所以先使用知乎的解释）
+
+>recurrent: 时间维度的展开，代表信息在时间维度从前往后的的传递和积累，可以类比markov假设，后面的信息的概率建立在前面信息的基础上，在神经网络结构上表现为后面的神经网络的隐藏层的输入是前面的神经网络的隐藏层的输出；recursive: 空间维度的展开，是一个树结构，比如nlp里某句话，用recurrent neural network来建模的话就是假设句子后面的词的信息和前面的词有关，而用recurxive neural network来建模的话，就是假设句子是一个树状结构，由几个部分(主语，谓语，宾语）组成，而每个部分又可以在分成几个小部分，即某一部分的信息由它的子树的信息组合而来，整句话的信息由组成这句话的几个部分组合而来。
+>
+
+通过上面的解释，可以大致了解二者的差别。如果还是很难理解，那么可以看一看下面的model结构：
+
+![image](https://user-images.githubusercontent.com/36061421/121810200-71b65b80-cc92-11eb-8df2-386e9a1461b6.png)
+
+这是DRCN的final version。整体来说还是像树结构的，所以称其为递归神经网络也是比较符合上面的说法。
+
+下面讨论一下这样的网络结构下的优点和缺点。
 
 
 [Table](#Table)
