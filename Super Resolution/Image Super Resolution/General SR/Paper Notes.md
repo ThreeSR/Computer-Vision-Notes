@@ -15,6 +15,7 @@ This file will contain selected papers for general purpose in image SR.
 + [Image Super-Resolution Using Deep Convolutional Networks](#image-super-resolution-using-deep-convolutional-networks)
 + [Deep Residual Learning for Image Recognition](#deep-residual-learning-for-image-recognition)
 + [Accurate Image Super-Resolution Using Very Deep Convolutional Networks](#accurate-image-super-resolution-using-very-deep-convolutional-networks)
++ [Deeply-Recursive Convolutional Network for Image Super-Resolution](deeply-recursive-convolutional-network-for-image-super-resolution)
 + [Image Super-Resolution Using Dense Skip Connections](image-super-resolution-using-dense-skip-connections)
 + [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
 + [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](url)
@@ -329,6 +330,14 @@ test dataset: Set5, Set14, Urban 100, B100.
 Training Parameters: We train all experiments over 80 epochs (9960 iterations with **batch size 64**). Learning rate was initially set to 0.1 and **then decreased by a factor of 10 every 20 epochs**. In total, the learning rate was decreased 3 times, and the learning is stopped after 80 epochs. Training takes **roughly 4 hours** on GPU Titan Z.
 
 总结一下：本文引入residual learning和gradient clipping对于DNN训练过程中的问题解决与处理，很有意义。此外，multi-scale的training也很有意思。
+
+[Table](#Table)
+
+#### Deeply-Recursive Convolutional Network for Image Super-Resolution
+
+本文使用递归神经网络来处理SR问题，这是递归神经网络第一次用于SR问题。
+
+
 
 [Table](#Table)
 
