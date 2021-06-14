@@ -611,6 +611,28 @@ Christian Ledig, Lucas Theis, Ferenc Husz´ar, Jose Caballero, Andrew Cunningham
 
 Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, Kyoung Mu Lee. Enhanced Deep Residual Networks for Single Image Super-Resolution. CVPR 2017.
 
+一开始，文章指出现在基于CNN的SR的一些问题：1.SR的结果对于网络细微变化很sensitive；2.很多网络是scale specific的，不便于实际使用。（这里还cue到了自己实验室去年发的VDSR，O(∩_∩)O哈哈~）
+
+接着，作者表明自己的contribution：
+1. 尽管已经有SRResNet，但是srresnet和resnet太像，而resnet本身是用于high-level任务的，照搬不一定合适，需要revise。EDSR的residual block就在srresnet上进行了修正，remove unnecessary modules。
+2. To utilize scale-independent information during training, we train high-scale models from pre-trained low-scale models.
+
+（和先前不太一样的还有：evaluate on DIV2K，在当时是newly released。这个数据集里面的image都是2k高清画质，网络可以从中学到很多东西。）
+
+**网络结构**
+
+residual blocks
+
+![image](https://user-images.githubusercontent.com/36061421/121855318-c7881380-cd25-11eb-8b23-c0dd2f739a84.png)
+
+可以看到，EDSR在residual block的设计上，删去了BN layer。原因是：
+1. Since batch normalization layers normalize the features, they get rid of range flexibility from networks by normalizing the features, it is better to remove them. 为了更好地保留住特征，所以在SR这种很看重image details的地方，不使用BN；
+2. **GPU memory usage is also sufficiently reduced** since the batch normalization layers consume the same amount of memory as the preceding convolutional layers. Our baseline model without batch normalization layer saves approximately 40% of memory usage during training, compared to SRResNet. Consequently, **we can build up a larger model that has better performance than conventional ResNet structure under limited computational resources**.
+
+在paper中，删去BN后的结构确实展现出了更好的效果。
+
+
+
 
 
 [Table](#Table)
