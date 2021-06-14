@@ -427,8 +427,30 @@ where α denotes the importance of the companion objective on the intermediate o
 
 training：91 images proposed in Yang；
 
-testing：set5， set14， B100， urban100.
+testing：set5， set14， B100， urban100.（**tips：大家使用urban100的原因一部分在于：it contains many challenging images failed by existing methods**.）
 
+**Training Setup**
+
+**Learning rate is initially set to 0.01 and then decreased by a factor of 10 if the validation error does not decrease for 5 epochs. 这句话道出了为什么learning rate在一定epoch之后要decrease。相当于一开始是粗略寻找，后续是精细寻找，所以要在后续decrease**。
+
+Training **roughly takes 6 days** on a machine using one Titan X GPU.
+
+其余细节详见paper。
+
+**Study of deep recursions**
+
+**Increasing recursion depth with a larger image context and more nonlinearities boosts performance.
+**
+
+这是使用deep recursion的原因。
+
+**实验比较**
+
+详见paper
+
+**小结**
+
+文章创新性地使用了recursive network，提出了两种方案，解决了三个问题，得到了好的结果。
 
 [Table](#Table)
 
