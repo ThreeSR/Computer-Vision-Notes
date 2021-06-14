@@ -621,7 +621,7 @@ Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, Kyoung Mu Lee. Enhanced Deep Re
 
 **网络结构**
 
-residual blocks
+*residual blocks*
 
 ![image](https://user-images.githubusercontent.com/36061421/121855318-c7881380-cd25-11eb-8b23-c0dd2f739a84.png)
 
@@ -631,7 +631,11 @@ residual blocks
 
 在paper中，删去BN后的结构确实展现出了更好的效果。
 
+*整体结构*
 
+![image](https://user-images.githubusercontent.com/36061421/121889728-2b253780-cd4c-11eb-9d52-a241da9dfe3a.png)
+
+在应用了上述的residual block之后，得到上面的网络结构就是EDSR的结构。这里的EDSR是针对于single scale而言的。除了EDSR，本文还提出了MDSR。MDSR就是针对于multiscale的处理。
 
 
 
