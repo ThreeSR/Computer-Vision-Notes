@@ -395,7 +395,39 @@ weights**. By looking at weights of predictions, we can figure out the marginal 
 
 **训练**
 
+训练部分先从损失函数讲起，损失函数又要从reconstruction layer讲起。
 
+![image](https://user-images.githubusercontent.com/36061421/121837509-5d14aa80-cd08-11eb-8337-8810e22ef83b.png)
+
+![image](https://user-images.githubusercontent.com/36061421/121837518-61d95e80-cd08-11eb-9457-90ace70478b6.png)
+
+对于reconstruction layer，它有两个input，一个是skip-connection的内容，另一个是各个recursion layer给过去的内容。对于二者的处理，作者简单地将两个input相加。同时，作者提出：可能可以有更加sophisticated的方法，但还没有尝试。
+
+不要忘记，因为recursive supervision，所以loss来源于两个方面，一个是上面的各个recursion layer，另一个是final output。对于final output的处理，作者选择加权求和：
+
+![image](https://user-images.githubusercontent.com/36061421/121837650-b7157000-cd08-11eb-984c-05bcfa6a38f5.png)
+
+These weights are learned during training.
+
+基于上面的前情提要，可以有下面的**loss function**：
+
+![image](https://user-images.githubusercontent.com/36061421/121837828-3145f480-cd09-11eb-82c6-e7f1c8ce8cc4.png)
+
+上面的loss function对应recursive supervision，下面对应final output：
+
+![image](https://user-images.githubusercontent.com/36061421/121837907-53d80d80-cd09-11eb-92e4-e3f27ecdeb25.png)
+
+最终，把上面二者combine一下，同时增加一个正则项：
+
+![image](https://user-images.githubusercontent.com/36061421/121838005-67837400-cd09-11eb-9a98-93088bc54926.png)
+
+where α denotes the importance of the companion objective on the intermediate outputs and β denotes the multiplier of weight decay. Setting α high makes the training procedure stable as early recursions easily converge. As training progresses, α decays to boost the performance of the final output. （weights当做正则项，可以压制weights，不至于太overfitting。）
+
+**Dataset**
+
+training：91 images proposed in Yang；
+
+testing：set5， set14， B100， urban100.
 
 
 [Table](#Table)
