@@ -18,8 +18,8 @@ This file will contain selected papers for general purpose in image SR.
 + [Deeply-Recursive Convolutional Network for Image Super-Resolution](#deeply-recursive-convolutional-network-for-image-super-resolution)
 + [Image Super-Resolution Using Dense Skip Connections](#image-super-resolution-using-dense-skip-connections)
 + [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
-+ [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](url)
-+ [Enhanced Deep Residual Networks for Single Image Super-Resolution](url)
++ [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](#photo-realistic-single-image-super-resolution-using-a-generative-adversarial-network)
++ [Enhanced Deep Residual Networks for Single Image Super-Resolution](enhanced-deep-residual-networks-for-single-image-super-resolution)
 + [Image Super-Resolution Using Very Deep Residual Channel Attention Networks](#image-super-resolution-using-very-deep-residual-channel-attention-networks)
 + [Toward Real-World Single Image Super-Resolution: A New Benchmark and A New Model](#toward-real-world-single-image-super-resolution-a-new-benchmark-and-a-new-model)
 
@@ -76,7 +76,7 @@ The IFP Group was founded by Professor **Thomas S. Huang** (1936 - 2020). (NAE M
 When I am searching for sth related to L0-Norm, I find a concept named as `Compressed Sensing`(CS). 这种方法和稀疏表达比较类似，想要突破传统的等间隔采样与奈奎斯特采样定理的限制，aiming to sample less points but also recover original signal successfully. 针对这种思路，可以参考知乎文章[形象易懂讲解算法II——压缩感知](https://zhuanlan.zhihu.com/p/22445302)。
 
 [Table](#Table)
-
+***
 #### Image Super-Resolution Using Deep Convolutional Networks
 
 Chao Dong, Chen Change Loy, Kaiming He, Xiaoou Tang. Image Super-Resolution Using Deep Convolutional Networks. IEEE TPAMI 2016.
@@ -197,7 +197,7 @@ different channels
 总的来说，SRCNN很有开创性价值，但也有当时的局限性，仍不失为好文章。
 
 [Table](#Table)
-
+***
 #### Deep Residual Learning for Image Recognition
 
 Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun. Deep Residual Learning for Image Recognition. CVPR 2016 Best Paper Award.
@@ -255,7 +255,7 @@ Actually, ResNet is a model built for high-level CV tasks. But the concept of Re
 当然了，关于residual learning带来的好处，还有很多，比如防止网络退化，防止backpropagation的时候gradient vanishing...这些内容可以详见文章；关于拉普拉斯算子的一些具体内容，以及为什么这么做可以提取图像边缘细节，还会涉及比较多的内容，详见冈萨雷斯的《数字图像处理（第三版）》，这本书非常好且详细。
 
 [Table](#Table)
-
+***
 #### Accurate Image Super-Resolution Using Very Deep Convolutional Networks
 
 Jiwon Kim, Jung Kwon Lee, Kyoung Mu Lee. Accurate Image Super-Resolution Using Very Deep Convolutional Networks. CVPR 2016.
@@ -332,7 +332,7 @@ Training Parameters: We train all experiments over 80 epochs (9960 iterations wi
 总结一下：本文引入residual learning和gradient clipping对于DNN训练过程中的问题解决与处理，很有意义。此外，multi-scale的training也很有意思。
 
 [Table](#Table)
-
+***
 #### Deeply-Recursive Convolutional Network for Image Super-Resolution
 
 本文使用递归神经网络来处理SR问题，这是递归神经网络第一次用于SR问题。
@@ -475,7 +475,7 @@ Both of the CEO and CTO in Imperial Vision obtained PhD degree from IC.
 作者分析了上面的三种结构，发现3>2>1。文章中分析的是，受益于低层特征和高层特征的结合，超分辨率重建的性能得到了提升。像第三种结构把所有深度层的特征都串联起来，得到了最佳的结果，说明不同深度层的特征之间包含的信息是互补的。
 
 [Table](#Table)
-
+***
 #### Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution
 
 University of California, Merced [Vision and Learning Lab](http://vllab.ucmerced.edu/)
@@ -571,6 +571,27 @@ Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution. CVPR 201
 最后谈谈个人意见：如果一口气需要2x，4x，8x的结果，这个网络是方便的；如果需要large scale factor的复原，这个网络也不错。但如果只是需要2x的结果，用这个网络可能没办法得到一个非常好的结果。通篇看下来，个人觉得progressively process SR problem的想法是本文很大的卖点，如果没办法很好地利用这个性质，可能没办法发挥整个网络的最佳功效。
 
 [Table](#Table)
+***
+
+#### Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network
+
+Twitter
+
+Christian Ledig, Lucas Theis, Ferenc Husz´ar, Jose Caballero, Andrew Cunningham, Alejandro Acosta, Andrew Aitken, Alykhan Tejani, Johannes Totz, Zehan Wang, Wenzhe Shi. Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. CVPR 2017.
+
+
+
+[Table](#Table)
+
+***
+
+#### Enhanced Deep Residual Networks for Single Image Super-Resolution
+
+
+
+[Table](#Table)
+
+***
 
 #### Image Super-Resolution Using Very Deep Residual Channel Attention Networks
 
@@ -589,6 +610,8 @@ RCAN mainly concentrates on the allocation of channel-wise attention, which shou
 Novelty: RIR(Residual in Residual) Structure, Channel Attention and RCAN(Residual Channel Attention Network) and Long Skip Connection and Short Skip Connection.
 
 [Table](#Table)
+
+***
 
 #### Toward Real-World Single Image Super-Resolution A New Benchmark and A New Model
 
