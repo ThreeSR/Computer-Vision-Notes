@@ -19,7 +19,7 @@ This file will contain selected papers for general purpose in image SR.
 + [Image Super-Resolution Using Dense Skip Connections](#image-super-resolution-using-dense-skip-connections)
 + [Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution](#deep-laplacian-pyramid-networks-for-fast-and-accurate-super-resolution)
 + [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](#photo-realistic-single-image-super-resolution-using-a-generative-adversarial-network)
-+ [Enhanced Deep Residual Networks for Single Image Super-Resolution](enhanced-deep-residual-networks-for-single-image-super-resolution)
++ [Enhanced Deep Residual Networks for Single Image Super-Resolution](#enhanced-deep-residual-networks-for-single-image-super-resolution)
 + [Image Super-Resolution Using Very Deep Residual Channel Attention Networks](#image-super-resolution-using-very-deep-residual-channel-attention-networks)
 + [Toward Real-World Single Image Super-Resolution: A New Benchmark and A New Model](#toward-real-world-single-image-super-resolution-a-new-benchmark-and-a-new-model)
 
@@ -454,6 +454,8 @@ Training **roughly takes 6 days** on a machine using one Titan X GPU.
 
 [Table](#Table)
 
+***
+
 #### Image Super-Resolution Using Dense Skip Connections
 
 [Paper](https://openaccess.thecvf.com/content_ICCV_2017/papers/Tong_Image_Super-Resolution_Using_ICCV_2017_paper.pdf)
@@ -604,6 +606,10 @@ Christian Ledig, Lucas Theis, Ferenc Husz´ar, Jose Caballero, Andrew Cunningham
 ***
 
 #### Enhanced Deep Residual Networks for Single Image Super-Resolution
+
+本文依然是SNU的CV Lab发的论文。
+
+Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, Kyoung Mu Lee. Enhanced Deep Residual Networks for Single Image Super-Resolution. CVPR 2017.
 
 
 
