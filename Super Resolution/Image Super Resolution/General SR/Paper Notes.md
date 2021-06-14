@@ -367,7 +367,35 @@ Training Parameters: We train all experiments over 80 epochs (9960 iterations wi
 
 这是DRCN的final version。整体来说还是像树结构的，所以称其为递归神经网络也是比较符合上面的说法。
 
-下面讨论一下这样的网络结构下的优点和缺点。
+下面讨论一下这样的网络结构下的优点和缺点以及缺点的解决。
+
+pros: the recursive model is simple and powerful.
+
+cons: 
++ difficult to train due to two reasons: 1.gradient vanishing; 2.gradient exploding. 至于为什么会出现gradient的问题，是因为recursive的过程中，gradient在每一层叠加的时候，都是相乘的。这样一来，层数如果很多的话，最终的gradient可能会很大也可能会很小。
++ Another known issue is that storing an exact copy of information through many recursions is not easy. In SR, output is vastly similar to input and recursive layer needs to keep the exact copy of input image for many recursions.
++ Finding the optimal number requires training many networks with different recursion depths. 这一点也很好理解。因为设置了recursive network，所以就多引入了how many layers这个超参数。实际使用的过程中，需要知道optimal是多少。
+
+针对于第一个和第三个问题，可以通过一种手段解决，那就是：recursive supervision。
+
+原文：**We supervise all recursions in order to alleviate the effect of vanishing/exploding gradients**. As we have assumed that the same representation can be used again and again during convolutions in the inference net, the same reconstruction net is used to predict HR images for all recursions. Our reconstruction
+net now outputs D predictions and all predictions are simultaneously supervised during training (Figure 3 (a)). We use all D intermediate predictions to compute the final output. All predictions are averaged during testing. The optimal weights are automatically learned during
+training. 
+
+简单来说，就是通过每一个recursion都监督的方式，避免gradient过大或者过小的问题。具体方案见上面的final version的网络结构。相比于一开始提出的DRCN，它增加了recursive supervision的结构。
+
+这样一来，第一个问题可以解决。那么又为什么可以解决第三个问题？
+
+原文：**The importance of picking the optimal number of recursions is reduced as our supervision enables utilizing predictions from all intermediate layers. If recursions are too deep for the given task, we expect the weight for late predictions to be low while early predictions receive high
+weights**. By looking at weights of predictions, we can figure out the marginal gain from additional recursions.
+
+我认为这种见解是值得学习的。在每一个recursive都可以有很好的supervision之后，每一个recursion都在学习更多的内容。对于一张输入图像，它的内容终究是有限的。前几个recursion提取完image的特征之后，后面的recursion自然提取不到什么内容。因此，可以通过文中的方式解决optimal number的问题。这样一来，第三个问题也解决了。
+
+针对于第二个问题，其实前面在讲VDSR的时候也遇到过，就是增加skip-connection就好。所以可以看到，在final version的网络结构中，有skip-connection直接从输入image到reconstruction network。
+
+**训练**
+
+
 
 
 [Table](#Table)
@@ -378,7 +406,7 @@ Training Parameters: We train all experiments over 80 epochs (9960 iterations wi
 
 [Imperial Vision](http://www.imperial-vision.com/)
 
-Both of the CEO and CTO in Imperial Vision graduated from IC.
+Both of the CEO and CTO in Imperial Vision obtained PhD degree from IC.
 
 本篇文章借鉴了DenseNet的思想：
 
