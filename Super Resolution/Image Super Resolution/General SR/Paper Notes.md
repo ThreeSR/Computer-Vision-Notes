@@ -579,7 +579,25 @@ Twitter
 
 Christian Ledig, Lucas Theis, Ferenc Husz´ar, Jose Caballero, Andrew Cunningham, Alejandro Acosta, Andrew Aitken, Alykhan Tejani, Johannes Totz, Zehan Wang, Wenzhe Shi. Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. CVPR 2017.
 
+本文相较于前一年的VDSR，更加借鉴了ResNet的思想。从网络结构上看，也是和原本的ResNet更加吻合。
 
+**Contributions**
+
+1. We set a new state of the art for image SR with high upscaling factors (4x) as measured by PSNR and structural similarity (SSIM) with our 16 blocks deep ResNet (**SRResNet**) optimized for *MSE*.
+2. We propose **SRGAN** which is a GAN-based network optimized for a new perceptual loss. **Here we replace the MSE-based content loss with a loss calculated on feature maps of the VGG network, which are more invariant to changes in pixel space**.
+3. 由于SRGAN的结果不利于使用PSNR度量，本文提出mean opinion score (MOS)的方法证明SRGAN是SOTA的。
+
+**网络结构**
+
+![image](https://user-images.githubusercontent.com/36061421/121852260-cd7bf580-cd21-11eb-8201-8c8c5bb5d29b.png)
+
+上面是SRResNet，也是SRGAN的generator。
+
+**关于GAN在SR中的使用**
+
+如果一味地想要PSNR提升，那么需要使用MSE-based方法。GAN网络的生成有自己独特的方式，和传统的MSE生成的HR image不同。因此，如果使用PSNR在SRGAN上，是有失偏颇的。
+
+因此，会想要提出一些新的方法或者是主观评判的方式证明SRGAN有更好的效果。
 
 [Table](#Table)
 
