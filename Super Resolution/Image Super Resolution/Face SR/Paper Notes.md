@@ -11,6 +11,8 @@ This file will contain selected papers for `face hallucination`.
 [Preface](#preface)
 
 [Main Body](#main-body)
++ [Beyond Face Rotation: Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis](#beyond-face-rotation-global-and-local-perception-gan-for-photorealistic-and-identity-preserving-frontal-view-synthesis)
++ [Disentangled Representation Learning GAN for Pose-Invariant Face Recognition](#disentangled-representation-learning-gan-for-pose-invariant-face-recognition)
 + [FSRNet: End-to-End Learning Face Super-Resolution with Facial Priors](#fsrnet-end-to-end-learning-face-super-resolution-with-facial-priors)
 
 
@@ -25,6 +27,28 @@ Some abbreviations you may need to know before next part:
 Notice: Chinese(Simplified) and English will be used in this file.
 
 # Main Body
+
+#### Beyond Face Rotation Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis
+
+National Laboratory of Pattern Recognition(NLPR), CASIA
+
+Member of NLPR: [Tieniu Tan](http://people.ucas.ac.cn/~tantieniu) Member of CAS, FIEEE, FIAPR, PhD & MS IC(UK), BEng XJTU
+
+Member of NLPR: [Ran He](http://people.ucas.ac.cn/~heran) FIAPR, PhD CASIA, MS & BEng DUT
+
+Director of NLPR:  [Tianzi Jiang](http://www.nlpr.ia.ac.cn/jiangtz/)  Chang Jiang Scholars, Member of Academia Europaea, PhD & MS ZJU, BS LZU
+
+TPGAN
+
+Rui Huang, Shu Zhang, Tianyu Li, Ran He. Beyond Face Rotation: Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis. ICCV 2017.
+
+#### Disentangled Representation Learning GAN for Pose-Invariant Face Recognition
+
+[Computer Vision Lab](http://cvlab.cse.msu.edu/), MSU
+
+[Xiaoming Liu](https://www.cse.msu.edu/~liuxm/index2.html)   FIAPR, PhD CMU, MS ZJU, BS Beijing Information Technology Institute
+
+Luan Tran, Xi Yin, Xiaoming Liu. Disentangled Representation Learning GAN for Pose-Invariant Face Recognition. CVPR 2017.
 
 #### FSRNet End-to-End Learning Face Super-Resolution with Facial Priors
 
