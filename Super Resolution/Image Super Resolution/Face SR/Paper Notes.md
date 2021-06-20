@@ -44,6 +44,40 @@ Rui Huang, Shu Zhang, Tianyu Li, Ran He. Beyond Face Rotation: Global and Local 
 
 [Pytorch Implementation](https://github.com/iwtw/pytorch-TP-GAN)
 
+**前言**
+
+本文提出了TPGAN模型，较好地解决了大角度侧脸对于正脸的还原，可以用于downstream的领域，比如：face recognition and attribution estimation.
+
+尽管随着深度学习的应用，在许多benchmark datasets上，model的效果超过了人类，但是pose variations are still the **bottleneck** for many real-world application scenarios.
+
+Existing methods that address pose variations can be divided into two categories：
++ One category tries to **adopt hand-crafted or learned pose-invariant features**
++ While the other resorts to **synthesis techniques** to recover a frontal view image from a large pose face image and then use the recovered face images for face recognition.
+
+针对于第一种方法，可以分为traditional和deep learning：
++ traditional的做法就是often make use of robust local descriptors such as Gabor, Haar and LBP to account for local distortions and then adopt metric learning techniques to achieve pose invariance.
++ DL的方法就是often handle position variances with pooling operation and employ triplet loss or contrastive loss to ensure invariance to very large intraclass variations.
+
+凭借着朴素的情感，不难发觉这种基于数学和描述子的方法，比较依赖于现有的信息。如果现有的信息不够sufficient，那么最终的结果不会好。简单来说，如果得到的姿态非常large，比如侧脸的转角太大，那么用这类方法恢复成正脸的难度很高，不够有效。
+
+对于第二种方法：
++ 早期的方式是utilize 3D geometrical transformations to render a frontal view by first aligning the 2D image with either a general or an identity specific 3D model. 这样的建模虽然有一定广泛性，但缺少fine details，会导致最终结果模糊；
++ 现在有了基于数据驱动的DL方法，并且也有比较好的结果，但结果还是不够清晰，需要进一步提升。
+
+由于人脸合成本质是ill-posed问题，所以如果能利用较多的先验知识（priors），那么可以得到更好的结果。我们可以类比一下人类是如何重建一个人的正脸的：
++ 第一步：When human try to conduct a view synthesis process, we firstly infer the global structure (or a sketch) of a frontal face based on both our prior knowledge and the observed profile. 
++ 第二步：Then our attention moves to the local areas where all facial details will be filled out.
+
+以上是一个从大局到细节的过程。基于这样的一个过程，作者提出了TPGAN的结构：a deep architecture with two pathways (TP-GAN) for frontal view synthesis. These two pathways focus on the inference of global structure and the transformation of local texture respectively.
+
+**Contribution**
++ We propose a human-like global and local aware GAN architecture for frontal view synthesis from a single image, which can synthesize photorealistic and identity preserving frontal view images **even under a very large pose**
++ We combine **prior knowledge** from data distribution (adversarial training) and domain knowledge of faces (symmetry and identity preserving loss) to exactly recover the lost information inherent in projecting a 3D object into a 2D image space.
++ We demonstrate the possibility of a **“recognition via generation” framework** and outperform state-of-the-art *recognition* results under a large pose. Although some deep learning methods have been proposed for face synthesis, our method is the first attempt to be effective for the recognition task with synthesized faces.
+
+(Note: **Frontal view synthesis**, or termed as **face normalization**, is a challenging task due to its ill-posed nature.)
+
+
 
 
 #### Disentangled Representation Learning GAN for Pose-Invariant Face Recognition
