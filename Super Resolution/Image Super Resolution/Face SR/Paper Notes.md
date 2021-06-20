@@ -81,7 +81,7 @@ Existing methods that address pose variations can be divided into two categories
 
 ![image](https://user-images.githubusercontent.com/36061421/122665234-a0738b00-d1d8-11eb-8fab-5f4b0bd51b79.png)
 
-整体结构分为global和local texture两个pathway。
+generator整体结构分为global和local texture两个pathway。
 
 *Global*
 
@@ -92,6 +92,58 @@ Existing methods that address pose variations can be divided into two categories
 分为四个网路，每一个针对于脸上的一处特征。最终将这些特征的内容级联在一起。
 
 通过上面两个pathways之后，output是合在一起的feature maps。
+
+除了generator，肯定还有discriminator。根据Goodfellow的论文，可以得到本问题背景下的min-max problem：
+
+![image](https://user-images.githubusercontent.com/36061421/122665455-e2510100-d1d9-11eb-82f2-cd244c53eec2.png)
+
+**Loss function**
+
+本文的loss由四个部分组成：
+
+Pixel-wise Loss
+
+![image](https://user-images.githubusercontent.com/36061421/122665504-34922200-d1da-11eb-9459-42f5f542b9a7.png)
+
+普通的像素级L1范数，虽然可能overly smooth，但是对于加快优化和superior performance依然重要。
+
+Symmetry Loss
+
+Specifically, we define a symmetry loss in two spaces, i.e. **the original pixel space** and **the Laplacian image space**, which is robust to illumination changes. 这样的原因下面再说。
+
+![image](https://user-images.githubusercontent.com/36061421/122665619-d4e84680-d1da-11eb-95f3-2e6cf907c51f.png)
+
+这个loss利用了人脸对称的先验知识。表达式可以看出，这是对输出结果分成左右两半，对这两半的内容进行约束。这样的好处有两个方面：1.generating realistic images by encouraging a symmetrical structure. 2.accelerating the convergence of TP-GAN by providing additional back-propagation gradient to relieve self-occlusion for extreme poses.
+
+但实际中，不太可能一张脸一定左右对称，因为：1.人脸自身问题；2.光照不同。根据作者所说：Fortunately, the pixel difference inside a local area is consistent, and the gradients of a point along all directions are largely reserved under different illuminations. Therefore, the Laplacian space is more robust to illumination changes and more indicative for face structure. 因此，上面说two spaces并且使用了拉普拉斯space。
+
+Adversarial Loss
+
+![image](https://user-images.githubusercontent.com/36061421/122665770-c189ab00-d1db-11eb-85b1-54b1569cb538.png)
+
+Identity Preserving Loss
+
+![image](https://user-images.githubusercontent.com/36061421/122665866-73c17280-d1dc-11eb-8e31-f535fad7eb30.png)
+
+使用Light CNN，将最后两层的内容相加。light cnn用于提取high-level features，可以提取到图像本身的identity，所以可以控制这个loss的大小来控制图像的最终质量。在人脸训练或者最终形成的过程中，identity的保留也是至关重要的。
+
+Overall Objective Function
+
+The final synthesis loss function is a weighted sum of all the losses defined above:
+
+![image](https://user-images.githubusercontent.com/36061421/122665932-e3cff880-d1dc-11eb-965d-da450c05b813.png)
+
+We also impose a total variation regularization Ltv on the synthesized result to reduce spike artifacts.
+
+注：spike artifact为图像伪影，关于什么是图像伪影，推荐两个链接：[常见的伪影](https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_1_0_compressionlossartifactsandvisualquality/4_1_2_commonartifacts)，[图像压缩中常见的一些压缩伪影（compresaion artifact）](https://www.jianshu.com/p/dbeec7b682f3)。后续再细说。
+
+**实验部分**
+
+涉及的数据集：训练集：MultiPIE, a large dataset with 750, 000+ images for face recognition under pose, illumination and expression changes；使用的Light CNN的训练集MS-Celeb-1M；测试集：LFW。（最终的结果中，LFW可以test出fine details，但色彩基调来源于MultiPIE）
+
+训练超参数和时间：The training of TP-GAN lasts for one day with a batch size of 10 and a learning rate of 10−4. In all our experiments, we empirically set α = 10−3, λ1 = 0.3, λ2 = 10−3, λ3 = 3 × 10−3 and λ4 = 10−4.
+
+大多数先前的工作只能复原60°以内的pose，太大的难以复原。但通过TPGAN，可以在适当的loss设置和enough data的条件下，复原出large pose的image。值得一提的是，TPGAN的方法没有使用到3D的先验知识，是纯粹使用2D data-driven的方法。
 
 
 
