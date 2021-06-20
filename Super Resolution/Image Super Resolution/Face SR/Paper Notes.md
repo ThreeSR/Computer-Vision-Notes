@@ -145,8 +145,22 @@ We also impose a total variation regularization Ltv on the synthesized result to
 
 大多数先前的工作只能复原60°以内的pose，太大的难以复原。但通过TPGAN，可以在适当的loss设置和enough data的条件下，复原出large pose的image。值得一提的是，TPGAN的方法没有使用到3D的先验知识，是纯粹使用2D data-driven的方法。
 
+通过上面提及的数据集，可以得到下面的结果：
 
+![image](https://user-images.githubusercontent.com/36061421/122666640-2693cf80-d1e1-11eb-8f00-5ca4ea1b4c7d.png)
 
+文章提出TPGAN的一个关键目的在于“recognition via generation”，在本文之前，虽有frontal view合成的方法，但是recognition基本都翻车了。文章中还根据一篇人脸幻象的study，指出：使用CNN合成的高分辨率图像，用于recognition的时候，将会导致performance降低而不是增加。为了试试能不能打破这个“魔咒”，文章进行了充分的实验。具体的实验场景设置详见论文。
+
+文中Feature Visualization部分用于TPGAN和Light CNN在分类上面的比较，结果是TPGAN的分类效果更好：
+
+![image](https://user-images.githubusercontent.com/36061421/122666796-0b758f80-d1e2-11eb-9b65-116158a79e89.png)
+
+实验的最后部分是消融实验，也就是算法分析。详见文章。
+
+小结：
+
+本文提出的TPGAN实现了“recognition via generation”的目标，得到了好的结果，这是非常有意义的。在loss function部分，Adversarial Loss和Identity Preserving Loss对最终的输出结果起到了关键作用，是目标得以达成的重要基石。
+***
 
 #### Disentangled Representation Learning GAN for Pose-Invariant Face Recognition
 
