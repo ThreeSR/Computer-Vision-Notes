@@ -44,6 +44,8 @@ Rui Huang, Shu Zhang, Tianyu Li, Ran He. Beyond Face Rotation: Global and Local 
 
 [Pytorch Implementation](https://github.com/iwtw/pytorch-TP-GAN)
 
+[TensorFlow Implementation(Original)](https://github.com/HRLTY/TP-GAN)
+
 **前言**
 
 本文提出了TPGAN模型，较好地解决了大角度侧脸对于正脸的还原，可以用于downstream的领域，比如：face recognition and attribution estimation.
