@@ -139,7 +139,7 @@ We also impose a total variation regularization Ltv on the synthesized result to
 
 **实验部分**
 
-涉及的数据集：训练集：MultiPIE, a large dataset with 750, 000+ images for face recognition under pose, illumination and expression changes；使用的Light CNN的训练集MS-Celeb-1M；测试集：LFW。（最终的结果中，LFW可以test出fine details，但色彩基调来源于MultiPIE）
+涉及的数据集：训练集：[MultiPIE](http://www.cs.cmu.edu/afs/cs/project/PIE/MultiPie/Multi-Pie/Home.html), a large dataset with 750, 000+ images for face recognition under pose, illumination and expression changes；使用的Light CNN的训练集MS-Celeb-1M；测试集：[LFW](http://vis-www.cs.umass.edu/lfw/)。（最终的结果中，LFW可以test出fine details，但色彩基调来源于MultiPIE）
 
 训练超参数和时间：The training of TP-GAN lasts for one day with a batch size of 10 and a learning rate of 10−4. In all our experiments, we empirically set α = 10−3, λ1 = 0.3, λ2 = 10−3, λ3 = 3 × 10−3 and λ4 = 10−4.
 
