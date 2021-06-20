@@ -77,6 +77,22 @@ Existing methods that address pose variations can be divided into two categories
 
 (Note: **Frontal view synthesis**, or termed as **face normalization**, is a challenging task due to its ill-posed nature.)
 
+**网络结构**
+
+![image](https://user-images.githubusercontent.com/36061421/122665234-a0738b00-d1d8-11eb-8fab-5f4b0bd51b79.png)
+
+整体结构分为global和local texture两个pathway。
+
+*Global*
+
+采用encoder和decoder的结构，先对图像的high-level features进行提取，在利用decoder进行返还。
+
+*Landmark Located Patch Network*
+
+分为四个网路，每一个针对于脸上的一处特征。最终将这些特征的内容级联在一起。
+
+通过上面两个pathways之后，output是合在一起的feature maps。
+
 
 
 
