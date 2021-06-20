@@ -42,6 +42,10 @@ TPGAN
 
 Rui Huang, Shu Zhang, Tianyu Li, Ran He. Beyond Face Rotation: Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis. ICCV 2017.
 
+[Pytorch Implementation](https://github.com/iwtw/pytorch-TP-GAN)
+
+
+
 #### Disentangled Representation Learning GAN for Pose-Invariant Face Recognition
 
 [Computer Vision Lab](http://cvlab.cse.msu.edu/), MSU
