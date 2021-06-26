@@ -14,6 +14,7 @@ This file will contain selected papers for `face hallucination`.
 + [Beyond Face Rotation: Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis](#beyond-face-rotation-global-and-local-perception-gan-for-photorealistic-and-identity-preserving-frontal-view-synthesis)
 + [Disentangled Representation Learning GAN for Pose-Invariant Face Recognition](#disentangled-representation-learning-gan-for-pose-invariant-face-recognition)
 + [FSRNet: End-to-End Learning Face Super-Resolution with Facial Priors](#fsrnet-end-to-end-learning-face-super-resolution-with-facial-priors)
++ [GAN Prior Embedded Network for Blind Face Restoration in the Wild](#gan-prior-embedded-network-for-blind-face-restoration-in-the-wild)
 
 
 # Preface
@@ -176,6 +177,8 @@ Luan Tran, Xi Yin, Xiaoming Liu. Disentangled Representation Learning GAN for Po
 
 
 
+
+***
 #### FSRNet End-to-End Learning Face Super-Resolution with Facial Priors
 
 Nanjing University of Science and Technology [Jian Yang](http://gsmis.njust.edu.cn/open/TutorInfo.aspx?dsbh=tLbjVM9T1OzsoNduSpyHQg==&yxsh=4iVdgPyuKTE=&zydm=L-3Jh59wXco=#Wdtd)
@@ -187,6 +190,25 @@ Yu Chen, Ying Tai, Xiaoming Liu, Chunhua Shen, Jian Yang. FSRNet: End-to-End Lea
 [Official Code](https://github.com/tyshiwo/FSRNet)
 
 Related material: [Zhihu](https://zhuanlan.zhihu.com/p/54198784)
+
+本文指出，应该利用人脸已有的先验知识去做人脸超分，这样出来的效果会更好。和一般的超分不同，人脸有一些固有的先验知识，比如可以假设一个人的脸是对称的，那么只需要原有人脸信息的一半，便可以复原整张人脸图片。
+
+所谓的先验信息，主要可以体现在数据集上面。比如本文使用的[Large-scale CelebFaces Attributes (CelebA) Dataset](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)和[Helen](http://www.ifp.illinois.edu/~vuongle2/helen/)数据集，它们在原有图片数据的基础上，增加了人工标注的数据信息，这些人工标注的内容就是所谓的先验信息。这些先验信息的获取是有人工成本的。
+
+***
+#### GAN Prior Embedded Network for Blind Face Restoration in the Wild
+
+PolyU [Visual Computing Lab](http://www4.comp.polyu.edu.hk/~cslzhang/)
+
+Director of the lab: [Lei Zhang](https://www4.comp.polyu.edu.hk/~cslzhang/)  DAMO Academy && PolyU FIEEE PhD & MS NWPU
+
+Tao Yang, Peiran Ren, Xuansong Xie, and Lei Zhang. GAN Prior Embedded Network for Blind Face Restoration in the Wild. CVPR 2021.
+
+Paper Implementation:
+
+[Pytorch](https://github.com/yangxy/GPEN)
+
+GPEN
 
 
 
