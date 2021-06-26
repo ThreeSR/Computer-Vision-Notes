@@ -172,6 +172,10 @@ We also impose a total variation regularization Ltv on the synthesized result to
 
 Luan Tran, Xi Yin, Xiaoming Liu. Disentangled Representation Learning GAN for Pose-Invariant Face Recognition. CVPR 2017.
 
+本文和上面的TPGAN有些类似。在一开篇的时候，文章指出了large pose discrepancy对于face recognition的挑战。根据实验表明， the performance of most algorithms degrades over 10% from frontal-frontal to frontal-profile face verification, while human performance only drops slightly. 
+
+
+
 #### FSRNet End-to-End Learning Face Super-Resolution with Facial Priors
 
 Nanjing University of Science and Technology [Jian Yang](http://gsmis.njust.edu.cn/open/TutorInfo.aspx?dsbh=tLbjVM9T1OzsoNduSpyHQg==&yxsh=4iVdgPyuKTE=&zydm=L-3Jh59wXco=#Wdtd)
