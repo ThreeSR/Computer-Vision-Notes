@@ -12,6 +12,9 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 + [Self-Attention](#self-attention)
 + [Transformer](#transformer)
 + [Reinforcement Learning](#reinforcement-learning)
++ [Meta Learning](#meta-learning)
++ [Life Long Learning](#life-long-learning)
++ 
 
 ***
 # Preface
@@ -186,6 +189,79 @@ Good representations are:
 ![image](https://user-images.githubusercontent.com/36061421/125226383-92121e00-e303-11eb-956e-9374f8c7c543.png)
 
 ![image](https://user-images.githubusercontent.com/36061421/125226406-9cccb300-e303-11eb-9a99-f9408f2de444.png)
+
+## Meta Learning
+
+元学习就是学习如何学习。比如在训练神经网络的时候，需要调节很多超参数，这些超参数有时候靠运气也靠经验。能否有一种方法，可以让机器自己学会怎么调参，从而解放人类呢？这就是元学习的初衷。
+
+但现实问题是，如果需要机器自己调参，我们需要另外train一个模型，让机器学习如何调参。在train新模型的时候，我们还是需要人工调参....（该来的都会有）
+
+那么我们这么做的目的是什么？
+
+其实还是想要探寻一种更普适的方法，让机器学习如何调参。虽然元学习本身也要调参，但可能会训练出一个泛化能力很好的模型，实现人们一次调参，多次利用的结果。这显然也是很有意义的。
+
+基于元学习这种思想，我们还可以“套娃”操作。比如做一个“元元学习”，在元学习的基础上进行元学习。
+
+## Life Long Learning
+
+终身学习是基于原有模型，持续地令其学习更新。（不是人文意义上的终身都在学习）
+
+**讲到LLL，有的人会想到迁移学习。这个跟迁移学习不一样。迁移学习从A迁移到B，我们只关注fine-tuning之后，B的表现怎么样。但在LLL中，我们还很关注A的表现怎么样。**
+
+以一种很naive的眼光看这个问题，感觉只要一直不断地输入数据，持续地增加epoch去train，就会有好结果。但其实不然。在学习新的B时，模型对A的表现会下降，这叫做`catastrophic forgetting`。那么，为什么会这样呢？
+
+![image](https://user-images.githubusercontent.com/36061421/125227817-267d8000-e306-11eb-95a6-0e6ed9f0adcf.png)
+
+可以这么认为，就是在train新的任务之后，数据（比如训练好的最优权重）在高维空间中发生了偏移。在新的任务的驱使下，原本的最优权重θ偏移了。导致的结果就是在新任务上表现好，在老任务上表现下降，这就是`catastrophic forgetting`（灾难性遗忘）。
+
+解决方案之一是`Selective Synaptic Plasticity`。原理如下：
+
+![image](https://user-images.githubusercontent.com/36061421/125228011-88d68080-e306-11eb-859a-268b8b3124f7.png)
+
+简单来说，就是在新任务与老任务之间做一个权衡，保全二者。
+
+具体内容见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)。
+
+## Network Compression
+
+一般来说，网络压缩有以下几种方法：
+
+**Network Pruning**
+
+可以对网络进行剪枝。但要注意，剪枝之后的网络也应该是可以使用矩阵运算的。因为一方面，pytorch不方便编程结构很奇怪的网络，另一方面，GPU需要矩阵进行加速，如果网路太奇怪，GPU都没办法好好加速。网络剪枝之后，需要使用原本random init的参数，不能换参数，否则train不出来。
+![image](https://user-images.githubusercontent.com/36061421/125228725-e3241100-e307-11eb-958a-24e1f47543ee.png)
+
+**Knowledge Distillation**
+
+知识蒸馏就是让一个large教师网络（teacher）教一个small学生网络（student），然后小的学生网络学会内容的同时，网络的开销也小。这样做的样式看上去像普通的监督学习，那么这么做的意义何在？
+
+意义在于，学生网络不光可以学到正确答案，还可以学到次正确，次次正确的内容。比如对数字1进行识别，学生网络不光可以知道正确答案是1，还可以知道有一定几率判别结果为7，相当于学生网络学到了1和7之间的相似关联。这一点是一般的监督学习没办法给予的。因为监督学习是打好了标签，没办法很准确地给出具体哪个结果的概率是多少。这就是知识蒸馏不同于平常网络的意义。
+
+![image](https://user-images.githubusercontent.com/36061421/125229137-adcbf300-e308-11eb-8d53-1b94e0e12059.png)
+
+**Parameter Quantization**
+
+参数量化指的是将原本8bit的数据压缩到更小的bit，甚至是1bit。这样显然可以降低memory和computation。这种做法是利用了数据的冗余。
+
+![image](https://user-images.githubusercontent.com/36061421/125229239-ef5c9e00-e308-11eb-8e0d-7a188cc03836.png)
+
+**Architecture Design**
+
+显然，在宏观的网络结构上，也可以做文章。不同于上面的pruning，这里是从layer角度入手，而不是神经元。
+
+使用了`Depthwise Separable Convolution`。不同于一般的CNN，Each filter only considers one channel，There is no interaction between channels。
+
+这样做的原理时`Low rank approximation`：
+
+![image](https://user-images.githubusercontent.com/36061421/125229646-d1dc0400-e309-11eb-8768-7553fae3bc41.png)
+
+具体内容见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)。
+
+这种中间“bottleneck”一下的手法，和NIN还是有异曲同工之妙的。
+
+**Dynamic Computation**
+
+这一部分就是在不同端（比如手机端，手表端），动态地调节网络的情况。以手机端为例，当手机电量很满的时候，网络结构完整，但手机电量不够的时候，网络进行压缩，减少电量消耗。
 
 
 
