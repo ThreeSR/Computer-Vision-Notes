@@ -67,10 +67,13 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 ![image](https://user-images.githubusercontent.com/36061421/125219089-cc28f300-e2f6-11eb-82a9-b58e9cab1e40.png)
 
 后剪枝可以保留更多分支，欠拟合的风险减小。与此同时，泛化能力比较好。但最大的问题是计算开销大。
+
+[Table](#table)
 ***
 ## Support Vector Machine
 Pending...
 
+[Table](#table)
 ***
 ## Feature Extraction and Sparse Learning
 
@@ -112,7 +115,10 @@ Pending...
 现实生活中，希望通过少量信息重构全部信息。对于通信系统，如果想要恢复原始信号，需要满足奈奎斯特采样定理。那可否用一些方式，突破奈奎斯特采样定理，使用更少的内容恢复原始信号？这就是压缩感知要做的事情。
 
 事实上，在很多应用中均可获得具有稀疏性的信号，例如图像或声音的数字信号通常在时域上不具有稀疏性，但经过傅里叶变换、余弦变换、小波变换等处理后却会转化为频域上的稀疏信号。
+
+[Table](#table)
 ***
+
 ## Auto Encoder
 
 基本结构：
@@ -156,6 +162,8 @@ Good representations are:
 ![image](https://user-images.githubusercontent.com/36061421/125223939-2c239780-e2ff-11eb-969a-f7d71ac6fac6.png)
 
 ![image](https://user-images.githubusercontent.com/36061421/125224059-6856f800-e2ff-11eb-9375-be59d85a5505.png)
+
+[Table](#table)
 ***
 
 ## Self-Attention
@@ -174,10 +182,16 @@ Good representations are:
 
 ![image](https://user-images.githubusercontent.com/36061421/125224707-aa346e00-e300-11eb-8d9f-a057a653c4d5.png)
 
+[Table](#table)
+
+***
 ## Transformer
 
 具体的Transformer相关内容，详见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)，很详细。
 
+[Table](#table)
+
+***
 ## Reinforcement Learning
 
 类比于传统的ML步骤，可以得到RL的步骤：
@@ -220,10 +234,21 @@ Good representations are:
 
 具体的off-policy方法这里不涉及，大致来说，off-policy常用`Proximal Policy Optimization (PPO)`。
 
+**Critic**
 
+![image](https://user-images.githubusercontent.com/36061421/125238555-f6d87300-e319-11eb-85ff-99e166cdaab8.png)
 
+Critic的作用就是预测衰减因子的数值。如果一个trajectory可以在短时间内结束，那么reward的估算不难。但是如果一个trajectory太长，我们就不太能在短时间内得到反馈。这时候就需要critic进行短时的预测，进行“未卜先知”，预测衰减因子的数值。
 
+那么，如何得到critic的value function呢？
 
+一般来说，有两种方法：1.Monte Carlo (MC) based approach；2.Temporal difference (TD) approach。
+
+pending...
+
+[Table](#table)
+
+***
 ## Meta Learning
 
 元学习就是学习如何学习。比如在训练神经网络的时候，需要调节很多超参数，这些超参数有时候靠运气也靠经验。能否有一种方法，可以让机器自己学会怎么调参，从而解放人类呢？这就是元学习的初衷。
@@ -236,6 +261,9 @@ Good representations are:
 
 基于元学习这种思想，我们还可以“套娃”操作。比如做一个“元元学习”，在元学习的基础上进行元学习。
 
+[Table](#table)
+
+***
 ## Life Long Learning
 
 终身学习是基于原有模型，持续地令其学习更新。（不是人文意义上的终身都在学习）
@@ -256,6 +284,9 @@ Good representations are:
 
 具体内容见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)。
 
+[Table](#table)
+
+***
 ## Network Compression
 
 一般来说，网络压缩有以下几种方法：
@@ -296,6 +327,8 @@ Good representations are:
 **Dynamic Computation**
 
 这一部分就是在不同端（比如手机端，手表端），动态地调节网络的情况。以手机端为例，当手机电量很满的时候，网络结构完整，但手机电量不够的时候，网络进行压缩，减少电量消耗。
+
+[Table](#table)
 
 
 
