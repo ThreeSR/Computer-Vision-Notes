@@ -8,8 +8,10 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 + [Decision Tree](#decision-tree)
 + [Support Vector Machine](#support-vector-machine)
 + [Feature Extraction and Sparse Learning](#feature-extraction-and-sparse-learning)
-+ 
-
++ [Auto Encoder](#auto-encoder)
++ [Self-Attention](#self-attention)
++ [Transformer](#transformer)
++ [Reinforcement Learning](#reinforcement-learning)
 
 ***
 # Preface
@@ -62,10 +64,11 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 ![image](https://user-images.githubusercontent.com/36061421/125219089-cc28f300-e2f6-11eb-82a9-b58e9cab1e40.png)
 
 后剪枝可以保留更多分支，欠拟合的风险减小。与此同时，泛化能力比较好。但最大的问题是计算开销大。
-
+***
 ## Support Vector Machine
 Pending...
 
+***
 ## Feature Extraction and Sparse Learning
 
 由于数据量的庞大，我们可能遇到“维数爆炸”的问题。在机器学习的过程中，并不是所有数据都在起巨大作用。在海量的数据中，我们应该挑选“有意义”的数据。因此，数据降维很重要。
@@ -106,8 +109,83 @@ Pending...
 现实生活中，希望通过少量信息重构全部信息。对于通信系统，如果想要恢复原始信号，需要满足奈奎斯特采样定理。那可否用一些方式，突破奈奎斯特采样定理，使用更少的内容恢复原始信号？这就是压缩感知要做的事情。
 
 事实上，在很多应用中均可获得具有稀疏性的信号，例如图像或声音的数字信号通常在时域上不具有稀疏性，但经过傅里叶变换、余弦变换、小波变换等处理后却会转化为频域上的稀疏信号。
+***
+## Auto Encoder
 
+基本结构：
 
+![image](https://user-images.githubusercontent.com/36061421/125222843-583e1900-e2fd-11eb-9c2d-6beac503ee6b.png)
+
+自编码器是一种self-supervised learning（自监督学习/自督导学习）的例子。对于自监督学习，就是通过不需要label的data进行学习，是无监督学习的一种。
+
+可以发现，CycleGAN和自编码器的思想很接近。此外利用中间得到的vector，我们可以进行特征解耦（Feature Disentanglement）的操作。
+
+这种特征解耦可以用在语音转换上：
+
+![image](https://user-images.githubusercontent.com/36061421/125223288-1792cf80-e2fe-11eb-8501-4060d609e15f.png)
+
+比如李宏毅老师的声音分为文字和个人腔调两部分，新垣结衣的声音也分为内容和音调两部分。两个人的语音讯息交叉，可以使得用李宏毅老师的腔调讲新垣结衣说的日文。
+
+![image](https://user-images.githubusercontent.com/36061421/125223517-7ce6c080-e2fe-11eb-8f34-945c854ac1ba.png)
+
+除了上面的应用，还可以用在：
+
+**VAE**
+
+![image](https://user-images.githubusercontent.com/36061421/125223572-9425ae00-e2fe-11eb-89d7-92086de7580e.png)
+
+**Compression**
+
+![image](https://user-images.githubusercontent.com/36061421/125223614-a56eba80-e2fe-11eb-99f3-362c9d17ee37.png)
+
+下面谈谈**Representation learning**
+
+什么是representation？
+
+![image](https://user-images.githubusercontent.com/36061421/125223816-fa123580-e2fe-11eb-8231-f1b00f95dd77.png)
+
+Good representations are:
+1. Compact
+2. Explanatory
+3. Disentangled
+4. Interpretable
+
+![image](https://user-images.githubusercontent.com/36061421/125223939-2c239780-e2ff-11eb-969a-f7d71ac6fac6.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125224059-6856f800-e2ff-11eb-9375-be59d85a5505.png)
+***
+
+## Self-Attention
+
+自注意力机制最早用于NLP领域，不同于传统的RNN（GRU,LSTM...），它可以一次性考虑非常多的语言信息，一并处理。但问题是positional encoding的方法。目前，没有最佳的positional encoding的解决方案，还在研究。
+
+具体的self-attention相关内容，详见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)。
+
+![image](https://user-images.githubusercontent.com/36061421/125224572-76594880-e300-11eb-8b35-4277dda6d550.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125224583-7c4f2980-e300-11eb-8b04-7f2c4592fe1d.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125224647-9557da80-e300-11eb-8b11-1d2403de040c.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125224670-9ee14280-e300-11eb-8316-35e6c65d23ad.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125224707-aa346e00-e300-11eb-8d9f-a057a653c4d5.png)
+
+## Transformer
+
+具体的Transformer相关内容，详见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)，很详细。
+
+## Reinforcement Learning
+
+类比于传统的ML步骤，可以得到RL的步骤：
+
+![image](https://user-images.githubusercontent.com/36061421/125226348-81fa3e80-e303-11eb-89e0-db95ea0e8e36.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125226357-8888b600-e303-11eb-812e-208d0d22c231.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125226383-92121e00-e303-11eb-956e-9374f8c7c543.png)
+
+![image](https://user-images.githubusercontent.com/36061421/125226406-9cccb300-e303-11eb-9a99-f9408f2de444.png)
 
 
 
