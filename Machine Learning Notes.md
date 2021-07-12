@@ -190,6 +190,40 @@ Good representations are:
 
 ![image](https://user-images.githubusercontent.com/36061421/125226406-9cccb300-e303-11eb-9a99-f9408f2de444.png)
 
+强化学习就是根据一个agent跟环境（environment）进行互动，得到相应reward，从而学习的过程。这是一个不断试错的过程，最终机器可以学会什么是对的，什么应该做。所以严格来说，强化学习和前面的监督学习与非监督学习并不相同。
+
+强化学习的难点在于如何进行optimization的过程。如上图所示，环境s会对actor进行影响，actor就是agent，reward就是agent做完action之后，根据环境得到的反馈。由于环境的不确定性，以及有时候reward不易定义，所以导致强化学习的训练是很艰难的，而且随机性很大。
+
+在上面说到的三者中，actor是一个神经网络结构，可以拿去train。既然要train，就需要一个loss function。对于RL，loss应该来自于reward的相关定义。
+
+下面介绍`policy gradient`：
+
+对于reward的处理，假如当前reward只考虑一开始的reward到现在为止，没有考虑后面的，那显然是short-sighted；
+
+如果reward是从开始到最后直接相加，也会有问题。问题在于当下的动作一般不会比最后的动作对最后的reward影响更大。所以需要设定一个衰减因子。（除了上面的操作，还需要对reward减去一个baseline）
+
+![image](https://user-images.githubusercontent.com/36061421/125236830-36ea2680-e317-11eb-9954-e272d8e1a6ce.png)
+
+γ就是那个衰减因子。
+
+对reward进行设定之后，下面是policy gradient的算法步骤：
+
+![image](https://user-images.githubusercontent.com/36061421/125236943-6e58d300-e317-11eb-8a7d-6fb78c424544.png)
+
+可以发现：**在每一次for循环的时候，都需要得到一堆新的数据，这些数据用来当做训练数据，之后用来进行优化的步骤**。这一点不同于一般的深度学习！原因在于：强化学习需要即时地与周围环境进行互动，得到当下的数据进行后续的修正。因此必须在得到新的θ之后，即时进行交互，得到一堆新数据之后再进行下一步操作。这点很重要，也揭示了强化学习不容易训练的本质。
+
+![image](https://user-images.githubusercontent.com/36061421/125237258-fb039100-e317-11eb-9584-316ec5ef4543.png)
+
+**On-policy and Off-policy**
+
+上述介绍的方法就是on-policy的方法，off-policy的不同点在于它并不是每次for循环都采集一堆数据，而是有可能用别的交互数据来train当下的模型。这样一来，可能做到不需要每次循环都采样一堆数据。
+
+具体的off-policy方法这里不涉及，大致来说，off-policy常用`Proximal Policy Optimization (PPO)`。
+
+
+
+
+
 ## Meta Learning
 
 元学习就是学习如何学习。比如在训练神经网络的时候，需要调节很多超参数，这些超参数有时候靠运气也靠经验。能否有一种方法，可以让机器自己学会怎么调参，从而解放人类呢？这就是元学习的初衷。
