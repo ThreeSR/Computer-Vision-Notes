@@ -14,7 +14,7 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 + [Reinforcement Learning](#reinforcement-learning)
 + [Meta Learning](#meta-learning)
 + [Life Long Learning](#life-long-learning)
-+ 
++ [Network Compression](#network-compression)
 
 ***
 # Preface
