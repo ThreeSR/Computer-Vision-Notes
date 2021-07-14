@@ -19,7 +19,7 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 ***
 # Preface
 
-在阅读CV的论文时，经常会看到一些机器学习的概念。这篇笔记的目的就是记录常见的机器学习概念，便于查阅。
+在阅读CV的论文时，经常会看到一些机器学习的概念。这篇笔记的目的就是记录常见的机器学习概念，便于查阅。 
 
 ***
 # Main Body
