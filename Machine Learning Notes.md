@@ -2,6 +2,8 @@
 
 This file will contain some Machine Learning(ML) knowledge for Computer Vision(CV).
 
+**是故聪与敏，可恃而不可恃也；自恃其聪与敏而不学者，自败者也。昏与庸，可限而不可限也；不自限其昏与庸，而力学不倦者，自力者也。**
+
 ***
 # Table
 
