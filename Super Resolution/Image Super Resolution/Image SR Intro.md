@@ -1,5 +1,7 @@
 # Image Super Resolution
 
+**但当涉猎，见往事耳。**
+
 Super Resolution(SR) belongs to low-level task in CV.
 
 For image SR, we aim to super resolve the low resolution input to high SR output.
