@@ -1,5 +1,12 @@
 # Computer-Vision-Notes
 
+**世界上只有一种真正的英雄主义，那就是认清了生活的真相后还依然热爱它。**
+
+**Il n'y a qu'un héroïsme au monde : c'est de voir le monde tel qu'il est , et de l'aimer.**
+
+**There is only one heroism in the world: to see the world as it is and to love it.**
+
+
 This repo will contain notes for CV-related Papers and Knowledge.
 
 Computer Vision Tasks can be roughly divided into two parts. The one is high-level tasks and the other is low-level tasks.
