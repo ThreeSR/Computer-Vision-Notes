@@ -27,4 +27,4 @@ TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV, JMLR, IEEE TVCG, ACM T
 
 <!--http://latex.codecogs.com/svg.latex?  ![](http://latex.codecogs.com/svg.latex?\\frac{1}{1+sin(x)}) 这是我们的公式 -->
 
-![image](https://user-images.githubusercontent.com/36061421/118397737-12136300-b688-11eb-8f3b-2c53f6210959.png)
+![image](https://user-images.githubusercontent.com/36061421/118397737-12136300-b688-11eb-8f3b-2c53f6210959.png) 
