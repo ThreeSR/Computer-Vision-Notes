@@ -147,6 +147,10 @@ Pending...
 
 ![image](https://user-images.githubusercontent.com/36061421/125223572-9425ae00-e2fe-11eb-89d7-92086de7580e.png)
 
+![image](https://user-images.githubusercontent.com/36061421/127492230-f55aac3a-9749-4578-a137-70ba01feef0d.png)
+
+VAE和一般的autoencoder是不同的。VAE本身带有生成的能力，而autoencoder的话，如果单纯看其输出，是没什么用的。关键在于它对于latent space内容的攫取。
+
 **Compression**
 
 ![image](https://user-images.githubusercontent.com/36061421/125223614-a56eba80-e2fe-11eb-99f3-362c9d17ee37.png)
@@ -166,6 +170,8 @@ Good representations are:
 ![image](https://user-images.githubusercontent.com/36061421/125223939-2c239780-e2ff-11eb-969a-f7d71ac6fac6.png)
 
 ![image](https://user-images.githubusercontent.com/36061421/125224059-6856f800-e2ff-11eb-9375-be59d85a5505.png)
+
+
 
 [Table](#table)
 ***
