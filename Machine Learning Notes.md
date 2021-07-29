@@ -17,6 +17,8 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 + [Meta Learning](#meta-learning)
 + [Life Long Learning](#life-long-learning)
 + [Network Compression](#network-compression)
++ [Generative Adversarial Network](#generative-adversarial-network)
++ [Variational Autoencoder](#variational-autoencoder)
 
 ***
 # Preface
@@ -329,6 +331,22 @@ pending...
 **Dynamic Computation**
 
 这一部分就是在不同端（比如手机端，手表端），动态地调节网络的情况。以手机端为例，当手机电量很满的时候，网络结构完整，但手机电量不够的时候，网络进行压缩，减少电量消耗。
+
+[Table](#table)
+
+***
+
+## Generative Adversarial Network
+
+Generative Adversarial Network简称GAN网络，其包含一个generator和discriminator。
+
+![image](https://user-images.githubusercontent.com/36061421/127455216-7d72d6f1-9e06-438d-bc8f-6f203617385b.png)
+
+generator的目标是骗过discriminator，从而从random noise生成一张逼真的图像。discriminator负责辨别图像的真伪，输出real或者fake的结论。
+
+关于GAN网络loss function的代码实现与分析，详见：[GAN的Loss的比较研究（1）——传统GAN的Loss的理解1](https://blog.csdn.net/StreamRock/article/details/81096105)。
+
+
 
 [Table](#table)
 
