@@ -163,7 +163,36 @@ RNN & Self-attention
 
 ## Transformer
 
-具体的Transformer相关内容，详见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)，很详细。
+具体的Transformer相关内容，可以详见[李宏毅老师的机器学习课件](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.html)，很详细。
+
+在处理真实问题的时候，我们经常会遇到seq2seq的问题。处理seq2seq的模型很多，今天介绍的transformer就是其中之一。
+
+![image](https://user-images.githubusercontent.com/36061421/137391669-d261a6aa-8578-4cfe-b70d-f7c628df4cdb.png)
+
+一般来说，seq2seq的模型都有encoder和decoder两个组成部分。最早在14年9月就已经有人提及了seq2seq model。最右侧就是transformer，可以看出来，它也是遵循encoder和decoder的基本结构。
+
+在学完上面的self-attention之后，直观而言，应该想到transformer中的self-attention应该遵循下面的基本结构：
+
+![image](https://user-images.githubusercontent.com/36061421/137391991-5637412b-9204-4b4b-8840-e1d67e9ba30a.png)
+
+但其实transformer中的结构更加复杂。实际情况中，不实用原本的结构也可以。可以自行针对不同问题设定不同的结构。
+
+![image](https://user-images.githubusercontent.com/36061421/137392184-43c3987d-e884-4b3b-bbbb-993d9d10db17.png)
+
+上图展示了transformer中使用self-attention的过程。相较于上面naive的版本，增加了layer norm和residual的过程。layer norm不用于batch norm，它的过程就是算mean和std，最后归一化。
+
+![image](https://user-images.githubusercontent.com/36061421/137392411-ab7ee6bd-88f1-4ecf-8e6b-222421718695.png)
+
+宏观地来看待这个结构。我们在一开始的时候加上`Sinusoidal`的positional encoding，之后接上上述结构，可以得到编码后的结果。
+
+如上面所说，可以不同于原本的transformer结构：
+
+![image](https://user-images.githubusercontent.com/36061421/137392795-a0a6f5d0-b3c2-416a-ae87-ba8e4af0795d.png)
+
+以上，就是transformer的encoder部分。
+
+
+
 
 
 
