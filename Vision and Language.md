@@ -191,7 +191,7 @@ RNN & Self-attention
 
 以上，就是transformer的encoder部分。
 
-
+ 
 
 
 
