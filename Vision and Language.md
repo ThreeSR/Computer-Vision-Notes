@@ -11,6 +11,7 @@
 + [Related Research Group](#related-research-group)
 + [Self-Attention](#self-attention)
 + [Transformer](#transformer)
++ [BERT](#bert)
 
 ***
 
@@ -167,6 +168,11 @@ RNN & Self-attention
 
 
 [Table](#table)
+
+***
+
+## BERT
+
 
 
 
