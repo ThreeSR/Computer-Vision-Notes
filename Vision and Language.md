@@ -191,7 +191,24 @@ RNN & Self-attention
 
 以上，就是transformer的encoder部分。
 
- 
+下面，来介绍一下decoder的部分：
+
+decoder一般分为两种，一种是`Autoregressive(AT)`，另一种叫做`Not Autoregressive(NAT)`。其中，AT比较符合我们常见的序列化建模。
+
+Autoregressive(AT)
+
+![image](https://user-images.githubusercontent.com/36061421/137436347-63ac14ac-2a6c-4964-b33a-c8e34c72927f.png)
+
+假如这是一个seq2seq的语音辨识系统，输入一段语音。通过encoder之后，生成四个vector。这四个vector将会送进decoder。与此同时，decoder也会有自己的输入。比如在句子开始的时候，会有BOS（begin of sentence），在句子结尾的时候，会有END。decoder在接收两方的输入之后，会生成自己的输出。这个输出经过softmax之后，会是一种概率分布。显然，最高的那一个就是本次的结果。
+
+对于此时输出的vector，其相应的维数在不同语言中可以不同。比如中文，常见汉字就是3、4千个，那么维数控制在4000以内就够用了（独热编码）；如果是英文，可以选择词根词缀、26个字母、常用单词作为维数的考量。
+
+AT的意思就是，后续的输入是根据前面的输出而来的。比如以下图为例：
+
+![image](https://user-images.githubusercontent.com/36061421/137437019-ac74e7d7-01cd-48ed-a2c4-394d7d29452c.png)
+
+前面出来的文字会参与到后面的输入之中。这时候会出来一个问题，就是如果中间某个字出了问题，后续整个序列会不会整段垮掉？这个问题后面再说，先skip。
+
 
 
 
