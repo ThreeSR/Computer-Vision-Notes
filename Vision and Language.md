@@ -24,6 +24,8 @@ VQA = visual question answering
 
 Image Caption是一个融合计算机视觉、自然语言处理和机器学习的综合问题，它类似于翻译一副图片为一段描述文字。 caption：n. （图片的）说明文字；（电影或电视的）字幕；（法律文件的）开端部分。
 
+General Language Understanding Evaluation = GLUE, is a collection of diverse natural language understanding tasks.
+
 [Table](#table)
 
 ***
