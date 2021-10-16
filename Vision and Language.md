@@ -18,11 +18,13 @@
 
 ## Term
 
-visual grounding：. Visual grounding is to localize multiple object regions in an image corresponding to multiple noun phrases from a sentence that describes the underlying scene. 总的来说，visual grounding比REC简单。
+visual grounding： Visual grounding is to localize multiple object regions in an image corresponding to multiple noun phrases from a sentence that describes the underlying scene. 总的来说，visual grounding比REC简单。
 
 Referring Expression Comprehension（REC）：它需要机器在接受一张图片和一个 query（指令）之后，「指」出图片当中与这个 query 所相关的物体。
 
 object detection：uses predefined category labels to classify fixed objects
+
+VCR = visual commonsense reasoning 
 
 VQA = visual question answering
 
