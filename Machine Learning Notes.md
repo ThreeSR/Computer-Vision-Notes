@@ -10,6 +10,7 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 + [Basic Theory](#basic-theory)
      + [Similarity](#similarity)
      + [Norm](#norm)
++ [Regreesion](#regression)
 + [Decision Tree](#decision-tree)
 + [Support Vector Machine](#support-vector-machine)
 + [Feature Extraction and Sparse Learning](#feature-extraction-and-sparse-learning)
@@ -52,6 +53,50 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 p范数也就是上面的**闵可夫斯基距离**。p=2就是**欧氏距离**，也就是常用的二范数。这里要注意，如果notation的时候直接就是“||·||”，没有任何上下标，**一般默认是二范数**。如果没有下标，只有上标，上标是2，那就是**二范数的平方**，就是**向量元素的平方和**。
 
 
+
+***
+
+## Regreesion
+
+回归问题是机器学习中非常经典的问题之一，常见的回归有线性回归，岭回归，LASSO，logistics回归。下面我们将进行介绍。
+
+### Linear Regreesion
+
+线性回归就是高中数学课本上面学习的内容。
+
+线性回归就是高中数学课本上面学习的内容。
+
+参考：[知乎](https://zhuanlan.zhihu.com/p/39363869)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8aeea3a9-c472-4d09-b677-c50c45ac42f6/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f296c4d6-6260-45ac-b09f-2eafaa6f97a8/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b67f7be3-a7b0-4948-b618-6ce7f4dc1aad/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea2d9952-2698-46ec-a6d1-5a4d4eed931f/Untitled.png)
+
+上面就是线性回归的公式形式，一般来说，要保持参数β的线性，x可以任意。比如x11 = x，x1p = x^p。
+
+如果是上面这种情况，那么称为POLYNOMIAL REGRESSION：
+
+**（注意：在做回归的时候，X的第一列是1！！）**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/27ce5d13-670f-4acc-be90-bc49717a0ef9/Untitled.png)
+
+在线性回归中，我们会使用MSE作为loss function，之后进行优化：
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/48afb9ef-1cab-4198-874c-4ec235e2229b/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/888a1fff-3726-4963-939f-5b23c90164e5/Untitled.png)
+
+优化之后的结果，就是高中课本上面的内容了。
+
+除了上面的线性回归，还有广义线性回归。所谓的广义线性回归就是在函数映射过后，可以实现线性回归的形式，比如：
+
+![Untitled](https://www.notion.so/rui-sun/Backbone-Knowledge-98f648f9c071494cbd4e588aa3f50864#edde881a0aa547e2b892cbcc850febd3)
+
+y可能不能线性回归，但是lny可以。
 
 ***
 
