@@ -7,6 +7,9 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 ***
 # Table
 
++ [Basic Theory](#basic-theory)
+     + [Similarity](#similarity)
+     + [Norm](#norm)
 + [Decision Tree](#decision-tree)
 + [Support Vector Machine](#support-vector-machine)
 + [Feature Extraction and Sparse Learning](#feature-extraction-and-sparse-learning)
@@ -27,6 +30,30 @@ This file will contain some Machine Learning(ML) knowledge for Computer Vision(C
 
 ***
 # Main Body
+
+## Basic Theory
+
+### Similarity
+
+如果度量两个向量之间的相似度，可以直接对它们进行**点乘**。之所以如此，是因为点乘之后可以得到二者夹角的余弦值。这一个值在向量空间中，可以度量两个向量的相近程度。
+
+![image](https://user-images.githubusercontent.com/36061421/142983179-f60cb504-83ab-47f7-b537-702f36ca6425.png)
+
+如果想要normalize上面的相似度，那么可以使用**余弦相似度**。在**点乘**的基础上，除以两个向量各自的模值即可。
+
+![image](https://user-images.githubusercontent.com/36061421/142983439-92f8458b-c9c7-4fff-96f0-97cd6c30e140.png)
+
+### Norm
+
+以下是**向量范数**：
+
+![image](https://user-images.githubusercontent.com/36061421/142984132-f80f3ec7-b809-48ae-9cf1-3c3331bc7ebf.png)
+
+p范数也就是上面的**闵可夫斯基距离**。p=2就是**欧氏距离**，也就是常用的二范数。这里要注意，如果notation的时候直接就是“||·||”，没有任何上下标，**一般默认是二范数**。如果没有下标，只有上标，上标是2，那就是**二范数的平方**，就是**向量元素的平方和**。
+
+
+
+***
 
 ## Decision Tree
 
