@@ -19,7 +19,7 @@ TOP Conferences: CVPR, ICCV, ECCV, NIPS, ICML, ICLR, SIGKDD, IJCAI, AAAI, SIGGRA
 
 [Reference](http://webdocs.cs.ualberta.ca/~zaiane/htmldocs/ConfRanking.html) 
 
-TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV, JMLR, IEEE TVCG, ACM TOG 
+TOP Transactions: IEEE TPAMI, IEEE TNNLS, IEEE TIP, IJCV, JMLR, IEEE TVCG, ACM TOG
 
 [Reference](https://www.ccf.org.cn/Academic_Evaluation/AI/)    
 
