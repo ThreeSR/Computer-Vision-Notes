@@ -7,7 +7,7 @@
 **There is only one heroism in the world: to see the world as it is and to love it.**
 
 
-This repo will contain notes for CV-related Papers and Knowledge.
+This repo will contain notes for CV-related Papers and Knowledge. 
 
 Computer Vision Tasks can be roughly divided into two parts. The one is high-level tasks and the other is low-level tasks. 
 
