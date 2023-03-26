@@ -1,6 +1,6 @@
 # Computer-Vision-Notes
 
-**世界上只有一种真正的英雄主义，那就是认清了生活的真相后还依然热爱它。**  
+**世界上只有一种真正的英雄主义，那就是认清了生活的真相后还依然热爱它。**
 
 **Il n'y a qu'un héroïsme au monde : c'est de voir le monde tel qu'il est , et de l'aimer.**
 
